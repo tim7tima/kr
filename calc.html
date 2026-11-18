@@ -61,9 +61,11 @@ input:focus,select:focus{outline:2px solid #f3c6d8;border-color:var(--acc)}
  <div data-pane="lmp"><div class="row"><label class="f">Первый день ПМ<input type="date" id="ga-lmp"></label><label class="f">Цикл, дней<input type="text" autocomplete="off" id="ga-cyc" value="28" inputmode="numeric"></label></div></div>
  <div data-pane="crl" hidden><div class="row"><label class="f">Дата УЗИ<input type="date" id="ga-usg"></label><label class="f">КТР, мм<input type="text" autocomplete="off" id="ga-crl" inputmode="decimal" step="0.1"></label></div></div>
  <div data-pane="ivf" hidden><div class="row"><label class="f">Дата переноса<input type="date" id="ga-tr"></label><label class="f">Возраст эмбриона<select id="ga-emb"><option value="5">5 сутки (бластоциста)</option><option value="3">3 сутки</option><option value="6">6 сутки</option><option value="4">4 сутки</option><option value="2">2 сутки</option></select></label></div></div>
+ <label class="chk" style="margin-top:8px"><input type="checkbox" id="ga-multi">Многоплодная беременность</label>
+ <div id="ga-chor-w" hidden><div class="row one"><label class="f">Тип многоплодия (хориальность)<select id="ga-chor"><option value="dcda">Дихориальная диамниотическая двойня (ДХДА)</option><option value="mcda">Монохориальная диамниотическая двойня (МХДА)</option><option value="mcma">Монохориальная моноамниотическая двойня (МХМА)</option><option value="tri">Трихориальная триамниотическая тройня</option><option value="unk">Не установлена</option></select></label></div><div class="note" style="margin-top:6px">По КТР — вводите <b>наибольший</b> КТР из плодов.</div></div>
  <div class="row"><label class="f">Расчёт на дату (по умолчанию — сегодня)<input type="date" id="ga-today"></label><div></div></div>
  <div class="res" id="r-ga">Введите данные</div>
- <div class="note">ПДР = ПМ + 280 дней (при цикле ≠ 28 дней — поправка на разницу). КТР — формула Robinson (до 13⁶ нед); при расхождении срока по ПМ и УЗИ I триместра более чем на 5–7 дней срок обычно устанавливают по УЗИ. ЭКО: ПДР = перенос + 266 − возраст эмбриона. Дата 30⁰ нед = ПДР − 70 дней — начало отпуска по беременности и родам (при многоплодной беременности — с 28 нед). Перечень обследований — из <span class="tag kr">КР «Нормальная беременность»</span>.</div>
+ <div class="note">ПДР = ПМ + 280 дней (при цикле ≠ 28 дней — поправка на разницу). КТР — формула Robinson (до 13⁶ нед); при расхождении срока по ПМ и УЗИ I триместра более чем на 5–7 дней срок обычно устанавливают по УЗИ. ЭКО: ПДР = перенос + 266 − возраст эмбриона. Дата 30⁰ нед = ПДР − 70 дней — начало отпуска по беременности и родам (при многоплодной — с 28 нед, ПДР − 84 дня; по законодательству об отпуске по беременности и родам). Многоплодная: ПДР указывается формально (40 нед); при расхождении срока по ПМ и УЗИ срок устанавливают по наибольшему КТР; плановое родоразрешение — ДХДА 37–38 нед, МХДА 36–37 нед, МХМА 32–34 нед (КС), тройня 35–36 нед; неясная хориальность — ведение как при монохориальной; УЗИ: монохориальная — каждые 2 нед с 16 нед + допплер, ди/трихориальная — каждые 4 нед с 16 нед; КТГ с 28 нед (МХМА — каждые 3 дня). Многоплодие — фактор умеренного риска ПЭ. <span class="tag kr">КР «Многоплодная беременность» 2024</span>. Перечень обследований — из <span class="tag kr">КР «Нормальная беременность»</span>.</div>
 </div></details>
 
 <details class="calc" id="c-wg"><summary><div class="ic">⚖️</div><div><div class="st">Прибавка массы тела</div><div class="sd">Норма прибавки по ИМТ до беременности и сроку</div></div><div class="chev">›</div></summary>
@@ -278,20 +280,40 @@ var CALC = (function () {
     [196, 216, 'Rh(–) без антител: антитела в 28 нед → анти-D иммуноглобулин 28–30 нед'],
     [196, 300, 'III триместр: ВИЧ, HBsAg, анти-HCV, сифилис, ОАК, биохимия, ОАМ, мазок; терапевт, стоматолог'],
     [210, 237, 'Допплерометрия 30⁰–33⁶ нед — группа высокого риска'],
-    [224, 300, 'КТГ с 32 нед — 1 раз в 2 недели'],
-    [238, 251, 'УЗИ плода III триместра (34⁰–35⁶ нед)'],
+    [224, 300, 'КТГ с 32 нед — 1 раз в 2 недели', 's'],
+    [238, 251, 'УЗИ плода III триместра (34⁰–35⁶ нед)', 's'],
     [245, 259, 'СГВ: посев/ПЦР влагалище + прямая кишка (35⁰–37⁰ нед)']
   ];
-  function pregnancy(lmp, todayT) {
+  // Многоплодная беременность — КР «Многоплодная беременность» (2024)
+  var MULTI = {
+    dcda: { name: 'дихориальная диамниотическая двойня', mono: false, d: [259, 266], text: '37–38 нед (элективно с 37⁰ нед)' },
+    mcda: { name: 'монохориальная диамниотическая двойня', mono: true, d: [252, 259], text: '36–37 нед (элективно с 36⁰ нед)' },
+    mcma: { name: 'монохориальная моноамниотическая двойня', mono: true, d: [224, 238], text: '32–34 нед, кесарево сечение после профилактики РДС плодов' },
+    tri: { name: 'трихориальная триамниотическая тройня', mono: false, d: [245, 252], text: '35–36 нед (элективно с 35⁰ нед), после профилактики РДС плодов' },
+    unk: { name: 'хориальность не установлена — ведётся как монохориальная', mono: true, d: [252, 259], text: '36–37 нед (как монохориальная, до уточнения)' }
+  };
+  function pregnancy(lmp, todayT, multi, chor) {
     var ga = diffDays(lmp, todayT);
     var r = { edd: addDays(lmp, 280), d30: addDays(lmp, 210), d28: addDays(lmp, 196), ga: ga, warn: '' };
+    r.multi = !!multi; r.leave = multi ? r.d28 : r.d30; r.leaveW = multi ? 28 : 30;
+    var M = multi ? (MULTI[chor] || MULTI.unk) : null, cap = 293, ev = [];
+    if (M) {
+      r.mtype = M.name; r.deliv = { from: addDays(lmp, M.d[0]), to: addDays(lmp, M.d[1]), text: M.text };
+      cap = M.d[1];
+      ev.push([112, cap, M.mono ? 'УЗИ плодов + допплерометрия каждые 2 недели (с 16 нед, монохориальная)' : 'УЗИ плодов каждые 4 недели (с 16 нед, ди/трихориальная); допплерометрия в 18⁰–20⁶ и 30–34 нед']);
+      ev.push([196, cap, chor === 'mcma' ? 'КТГ плодов каждые 3 дня (с 28 нед, МХМА)' : 'КТГ плодов 1 раз в 2 недели (с 28 нед)']);
+      if (chor === 'mcma') ev.push([210, 224, 'Госпитализация в акушерский стационар 2–3 группы (30–32 нед, МХМА)']);
+      ev.push([M.d[0], M.d[1], 'Плановое родоразрешение: ' + M.text]);
+    }
     if (ga < 0) { r.error = 'Дата в будущем: срок отрицательный — проверьте даты'; return r; }
     if (ga > 44 * 7) { r.error = 'Срок больше 44 недель — проверьте даты'; return r; }
     r.gaText = fmtGA(ga); r.tri = trimester(ga); r.daysToEdd = diffDays(todayT, r.edd);
     r.now = []; r.next = [];
-    EVENTS.forEach(function (e) {
-      if (ga >= e[0] && ga <= e[1]) r.now.push(e[2]);
-      else if (e[0] > ga) r.next.push({ from: addDays(lmp, e[0]), to: addDays(lmp, Math.min(e[1], 293)), text: e[2], start: e[0] });
+    EVENTS.filter(function (e) { return !(M && e[3] === 's'); }).concat(ev).forEach(function (e) {
+      if (M && e[0] > cap) return;
+      var nowTo = M ? Math.min(e[1], cap) : e[1], nextTo = Math.min(e[1], cap);
+      if (ga >= e[0] && ga <= nowTo) r.now.push(e[2]);
+      else if (e[0] > ga) r.next.push({ from: addDays(lmp, e[0]), to: addDays(lmp, nextTo), text: e[2], start: e[0] });
     });
     r.next.sort(function (a, b) { return a.start - b.start; });
     return r;
@@ -508,8 +530,8 @@ function calcGA(){
  else {if(!$('ga-tr').value)return show('r-ga','','Укажите дату переноса');base=C.lmpFromIVF($('ga-tr').value,$('ga-emb').value);}
  if(base.error)return show('r-ga','high',esc(base.error));
  var t=C.parseDate($('ga-today').value);if(t===null)return show('r-ga','high','Укажите дату расчёта');
- var r=C.pregnancy(base.lmp,t);if(r.error)return show('r-ga','high',esc(r.error));
- var h='<div class="big">'+r.gaText+'</div><div class="kv"><b>ПДР</b><span>'+C.fmtDate(r.edd)+(r.daysToEdd>=0?' (через '+r.daysToEdd+' дн)':' (прошла '+(-r.daysToEdd)+' дн назад)')+'</span><b>30 недель (декрет)</b><span>'+C.fmtDate(r.d30)+dleft(C.diffDays(t,r.d30))+'</span><b>Триместр</b><span>'+r.tri+'</span>';
+ var mu=$('ga-multi').checked;$('ga-chor-w').hidden=!mu;var r=C.pregnancy(base.lmp,t,mu,$('ga-chor').value);if(r.error)return show('r-ga','high',esc(r.error));
+ var h='<div class="big">'+r.gaText+'</div><div class="kv"><b>ПДР</b><span>'+C.fmtDate(r.edd)+(r.daysToEdd>=0?' (через '+r.daysToEdd+' дн)':' (прошла '+(-r.daysToEdd)+' дн назад)')+'</span><b>'+r.leaveW+' недель (декрет)</b><span>'+C.fmtDate(r.leave)+dleft(C.diffDays(t,r.leave))+'</span>'+(r.multi?'<b>Родоразрешение</b><span>'+C.fmtDate(r.deliv.from)+'–'+C.fmtDate(r.deliv.to)+' · '+esc(r.deliv.text)+'</span><b>Тип</b><span>'+esc(r.mtype)+'</span>':'')+'<b>Триместр</b><span>'+r.tri+'</span>';
  if(m==='crl')h+='<b>Срок на дату УЗИ</b><span>'+C.fmtGA(base.gaAtUsg)+'</span>';
  h+='<b>Условная дата ПМ</b><span>'+C.fmtDate(base.lmp)+'</span></div>';
  if(base.warn)h+='<div class="note">⚠️ '+esc(base.warn)+'</div>';
