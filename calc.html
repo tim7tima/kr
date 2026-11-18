@@ -63,7 +63,7 @@ input:focus,select:focus{outline:2px solid #f3c6d8;border-color:var(--acc)}
  <div data-pane="ivf" hidden><div class="row"><label class="f">Дата переноса<input type="date" id="ga-tr"></label><label class="f">Возраст эмбриона<select id="ga-emb"><option value="5">5 сутки (бластоциста)</option><option value="3">3 сутки</option><option value="6">6 сутки</option><option value="4">4 сутки</option><option value="2">2 сутки</option></select></label></div></div>
  <div class="row"><label class="f">Расчёт на дату (по умолчанию — сегодня)<input type="date" id="ga-today"></label><div></div></div>
  <div class="res" id="r-ga">Введите данные</div>
- <div class="note">ПДР = ПМ + 280 дней (при цикле ≠ 28 дней — поправка на разницу). КТР — формула Robinson (до 13⁶ нед); при расхождении срока по ПМ и УЗИ I триместра более чем на 5–7 дней срок обычно устанавливают по УЗИ. ЭКО: ПДР = перенос + 266 − возраст эмбриона. Перечень обследований — из <span class="tag kr">КР «Нормальная беременность»</span>.</div>
+ <div class="note">ПДР = ПМ + 280 дней (при цикле ≠ 28 дней — поправка на разницу). КТР — формула Robinson (до 13⁶ нед); при расхождении срока по ПМ и УЗИ I триместра более чем на 5–7 дней срок обычно устанавливают по УЗИ. ЭКО: ПДР = перенос + 266 − возраст эмбриона. Дата 30⁰ нед = ПДР − 70 дней — начало отпуска по беременности и родам (при многоплодной беременности — с 28 нед). Перечень обследований — из <span class="tag kr">КР «Нормальная беременность»</span>.</div>
 </div></details>
 
 <details class="calc" id="c-wg"><summary><div class="ic">⚖️</div><div><div class="st">Прибавка массы тела</div><div class="sd">Норма прибавки по ИМТ до беременности и сроку</div></div><div class="chev">›</div></summary>
@@ -284,7 +284,7 @@ var CALC = (function () {
   ];
   function pregnancy(lmp, todayT) {
     var ga = diffDays(lmp, todayT);
-    var r = { edd: addDays(lmp, 280), ga: ga, warn: '' };
+    var r = { edd: addDays(lmp, 280), d30: addDays(lmp, 210), d28: addDays(lmp, 196), ga: ga, warn: '' };
     if (ga < 0) { r.error = 'Дата в будущем: срок отрицательный — проверьте даты'; return r; }
     if (ga > 44 * 7) { r.error = 'Срок больше 44 недель — проверьте даты'; return r; }
     r.gaText = fmtGA(ga); r.tri = trimester(ga); r.daysToEdd = diffDays(todayT, r.edd);
@@ -500,6 +500,7 @@ document.querySelectorAll('.seg').forEach(function(s){var k=s.dataset.seg;seg[k]
 document.querySelectorAll('[data-only]').forEach(function(p){p.hidden=p.dataset.only!=='ante'});
 $('ga-today').value=C.todayStr();
 
+function dleft(n){return n>0?' (через '+n+' дн)':n===0?' (сегодня)':' (наступили '+(-n)+' дн назад)'}
 function calcGA(){
  var m=seg.ga,base;
  if(m==='lmp'){if(!$('ga-lmp').value)return show('r-ga','','Укажите первый день последней менструации');base=C.lmpFromLMP($('ga-lmp').value,$('ga-cyc').value);}
@@ -508,7 +509,7 @@ function calcGA(){
  if(base.error)return show('r-ga','high',esc(base.error));
  var t=C.parseDate($('ga-today').value);if(t===null)return show('r-ga','high','Укажите дату расчёта');
  var r=C.pregnancy(base.lmp,t);if(r.error)return show('r-ga','high',esc(r.error));
- var h='<div class="big">'+r.gaText+'</div><div class="kv"><b>ПДР</b><span>'+C.fmtDate(r.edd)+(r.daysToEdd>=0?' (через '+r.daysToEdd+' дн)':' (прошла '+(-r.daysToEdd)+' дн назад)')+'</span><b>Триместр</b><span>'+r.tri+'</span>';
+ var h='<div class="big">'+r.gaText+'</div><div class="kv"><b>ПДР</b><span>'+C.fmtDate(r.edd)+(r.daysToEdd>=0?' (через '+r.daysToEdd+' дн)':' (прошла '+(-r.daysToEdd)+' дн назад)')+'</span><b>30 недель (декрет)</b><span>'+C.fmtDate(r.d30)+dleft(C.diffDays(t,r.d30))+'</span><b>Триместр</b><span>'+r.tri+'</span>';
  if(m==='crl')h+='<b>Срок на дату УЗИ</b><span>'+C.fmtGA(base.gaAtUsg)+'</span>';
  h+='<b>Условная дата ПМ</b><span>'+C.fmtDate(base.lmp)+'</span></div>';
  if(base.warn)h+='<div class="note">⚠️ '+esc(base.warn)+'</div>';
