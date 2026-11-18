@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="apple-touch-icon" href="apple-touch-icon.png"><link rel="icon" type="image/png" href="icon-192.png"><link rel="manifest" href="manifest.json"><meta name="theme-color" content="#9b2c5a"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Справочник КР">
+<title>Гормональная терапия — МГТ, ЗГТ, КОК</title>
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<style>
+:root{--acc:#9b2c5a;--ink:#1f2328;--mut:#6b7280;--line:#e7e3dd;--bg:#f6f4f1}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:110px}
+body{margin:0;font:16px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink)}
+main{max-width:820px;margin:0 auto;padding:12px 10px 50px}
+.home{display:inline-block;margin:0 0 10px;padding:6px 12px;border-radius:20px;background:#fbeaf1;color:var(--acc);text-decoration:none;font-size:13.5px}
+.top{background:linear-gradient(135deg,#9b2c5a,#c2416f);color:#fff;border-radius:16px;padding:16px 18px;margin-bottom:10px}
+.top h1{margin:0 0 4px;font-size:21px}.top p{margin:0;font-size:13.5px;opacity:.95}
+.sticky{position:sticky;top:0;z-index:5;background:var(--bg);padding:6px 0 2px}
+#q{width:100%;padding:10px 12px;border:1px solid #ddd5ce;border-radius:11px;font-size:16px;background:#fff;-webkit-appearance:none}
+#q:focus{outline:2px solid #f3c6d8;border-color:var(--acc)}
+nav.chips{display:flex;gap:6px;overflow-x:auto;padding:8px 2px;scrollbar-width:none}nav.chips::-webkit-scrollbar{display:none}
+nav.chips a{flex:0 0 auto;white-space:nowrap;padding:7px 12px;border-radius:20px;background:#fff;border:1px solid var(--line);color:var(--ink);text-decoration:none;font-size:13.5px}
+h2.grp{font-size:13px;text-transform:uppercase;letter-spacing:.6px;color:var(--mut);margin:18px 4px 8px}
+details.c{background:#fff;border:1px solid var(--line);border-radius:14px;margin-bottom:10px;overflow:hidden}
+details.c>summary{list-style:none;cursor:pointer;padding:13px 14px;display:flex;gap:12px;align-items:center}
+details.c>summary::-webkit-details-marker{display:none}
+.ic{flex:0 0 40px;height:40px;border-radius:11px;background:#fbeaf1;display:flex;align-items:center;justify-content:center;font-size:20px}
+.st{font-weight:700;color:var(--acc);font-size:15.5px}.sd{font-size:12.5px;color:var(--mut)}
+.chev{margin-left:auto;color:#c8b8bf;transition:.2s}details[open] .chev{transform:rotate(90deg)}
+.body{padding:4px 14px 14px;border-top:1px solid #f1ece7;font-size:14.5px}
+.body ul{margin:6px 0;padding-left:18px}.body li{margin:4px 0}
+.sub{font-size:12.5px;font-weight:700;text-transform:uppercase;letter-spacing:.4px;color:var(--acc);margin:14px 0 4px}
+table{width:100%;border-collapse:collapse;font-size:13.5px;margin:6px 0}
+th,td{border:1px solid #eee7e1;padding:7px 8px;vertical-align:top;text-align:left}
+th{background:#fbf3f6;color:#7a2248;font-weight:700}
+.box{border-radius:11px;padding:10px 12px;margin:8px 0;font-size:13.5px}
+.b-ok{background:#ecfdf5;border:1px solid #a7f3d0}.b-w{background:#fff7ed;border:1px solid #fed7aa}.b-no{background:#fef2f2;border:1px solid #fecaca}
+.tag{display:inline-block;font-size:10.5px;padding:1px 7px;border-radius:10px;font-weight:700;vertical-align:1px}.kr{background:#dcfce7;color:#166534}.sm{background:#fef3c7;color:#92400e}
+.dr{color:#6b4b5a;font-size:12.5px}
+mark{background:#fde68a;padding:0 1px;border-radius:2px}
+.hide{display:none!important}
+#none{display:none;text-align:center;color:var(--mut);padding:20px}
+.leg{font-size:12px;color:var(--mut);margin:4px 4px 0}
+.cr{text-align:center;font-size:11.5px;color:#b4aaa2;margin:22px 0 0}
+@media(max-width:560px){
+ table.s,table.s tbody,table.s tr,table.s td{display:block;width:100%}
+ table.s thead{display:none}
+ table.s tr{border:1px solid #eee7e1;border-radius:10px;margin:8px 0;overflow:hidden}
+ table.s td{border:none;border-bottom:1px solid #f4efea;padding:6px 10px}
+ table.s td:last-child{border-bottom:none}
+ table.s td:before{content:attr(data-l);display:block;font-size:11px;font-weight:700;color:#9b6a80;text-transform:uppercase;letter-spacing:.3px}
+ table.s td:first-child{background:#fbf3f6;font-weight:700;color:#7a2248}
+ table.s td:first-child:before{display:none}
+}
+</style></head><body><main>
+<a class="home" href="index.html">← Главная</a>
+<div class="top"><h1>💊 Гормональная терапия</h1><p>МГТ / ЗГТ, локальные эстрогены, КОК и гестагены по показаниям — кому, что, в какой дозе и когда</p></div>
+<div class="sticky">
+<input id="q" type="search" placeholder="Поиск: препарат, доза, состояние…" autocomplete="off">
+<nav class="chips"><a href="#g1">🌸 МГТ</a><a href="#g2">🧬 ЗГТ (ПНЯ, аменорея)</a><a href="#g3">💧 Локальная</a><a href="#g4">🌿 Негормональная</a><a href="#g5">💊 КОК и гестагены</a><a href="#g6">🚫 Не назначать</a></nav>
+</div>
+<p class="leg"><b>#</b> — вне инструкции (off-label) · <b>**</b> — ЖНВЛП · <span class="tag kr">КР</span> — из клинических рекомендаций</p>
+<div id="none">Ничего не найдено</div>
+
+<!-- ================= МГТ ================= -->
+<h2 class="grp" id="g1">Менопаузальная гормональная терапия (КР «Менопауза», 2024)</h2>
+
+<details class="c"><summary><div class="ic">📌</div><div><div class="st">Принципы и показания к МГТ</div><div class="sd">Кому назначать, «окно возможностей», длительность</div></div><div class="chev">›</div></summary><div class="body">
+<div class="sub">Показания <span class="tag kr">КР</span></div>
+<ul>
+<li>Вазомоторные симптомы <b>умеренной и тяжёлой</b> степени, снижающие качество жизни</li>
+<li>Генитоуринарный менопаузальный синдром (ГУМС), сексуальная дисфункция</li>
+<li>Профилактика постменопаузального остеопороза</li>
+<li>ПНЯ и ранняя менопауза (в т.ч. после химио-/лучевой терапии, двусторонней овариэктомии) — <b>ЗГТ как можно раньше</b></li>
+<li>Артралгии, миалгии, нарушения сна/памяти, психоэмоциональные — после дообследования у профильных специалистов и исключения других причин</li>
+</ul>
+<div class="sub">Принципы</div>
+<ul>
+<li>Старт системной МГТ — <b>до 60 лет и &lt;10 лет постменопаузы</b>; оптимально — пери- и ранняя постменопауза. Для вагинального эстриола возрастных ограничений нет</li>
+<li><b>Минимальная эффективная доза</b>; с возрастом и длительностью постменопаузы — снижать дозу</li>
+<li>Перименопауза — стандартные и низкие дозы эстрогенов; постменопауза — низкие и ультранизкие</li>
+<li>Переоценка польза/риск — <b>не реже 1 раза в год</b>; произвольно ограничивать длительность МГТ не рекомендуется</li>
+<li>МГТ <b>не обладает контрацептивным эффектом</b> — предупредить пациентку</li>
+<li>Микронизированный прогестерон** и дидрогестерон** в наименьшей степени связаны с риском РМЖ среди гестагенов</li>
+<li>Трансдермальный эстрадиол предпочтителен: высокий риск ВТЭО, ЖКБ, заболевания ЖКТ с нарушением всасывания</li>
+<li>Сердечно-сосудистые и метаболические заболевания — Российские критерии приемлемости МГТ (приложение В к КР)</li>
+<li>Препараты тестостерона для лечения климактерических симптомов <b>не рекомендуются</b> (в РФ не зарегистрированы)</li>
+</ul>
+</div></details>
+
+<details class="c" open><summary><div class="ic">🧭</div><div><div class="st">Выбор режима: кому что</div><div class="sd">Матка есть / нет, стадия климактерия</div></div><div class="chev">›</div></summary><div class="body">
+<table class="s"><thead><tr><th>Кому</th><th>Режим</th><th>Препараты и дозы</th></tr></thead><tbody>
+<tr><td>Менопаузальный переход (цикл сохранён), профилактика ГПЭ, регуляция цикла</td><td>Монотерапия гестагенами</td><td>Прогестерон микронизированный** 200–400 мг/сут <span class="dr">(Утрожестан)</span> или #дидрогестерон** 10–20 мг/сут <span class="dr">(Дюфастон)</span> — <b>не менее 10–15 дней</b> цикла.<br>#ЛНГ-ВМС 52 мг <span class="dr">(Мирена)</span> — если нужна контрацепция или обильные кровотечения без органической причины</td></tr>
+<tr><td>Перименопауза, матка есть, <b>≥6 мес</b> после последней менструации (по решению врача — с 3 мес)</td><td>Комбинированная <b>циклическая</b></td><td>Таблетки: эстрадиол 2 мг или 1 мг + гестаген <span class="dr">(Фемостон 2/10, 1/10; Климонорм; Цикло-Прогинова)</span>.<br>Гель: эстрадиол 1,5 мг (0,06% — 2,5 г) или 1 мг (0,1% — 1 г) <span class="dr">(Эстрожель, Дивигель)</span> + прогестерон микронизированный** 200–300 мг/сут внутрь/вагинально или дидрогестерон** 10–20 мг/сут (по ИМТ) — <b>≥10–14 дней</b></td></tr>
+<tr><td>Постменопауза, матка есть, <b>≥12 мес</b> после последней менструации</td><td>Монофазная <b>непрерывная</b>, низкодозированная</td><td>Эстрадиол 1 мг + дидрогестерон 5 мг <span class="dr">(Фемостон конти)</span>; эстрадиол 1 мг + дроспиренон 2 мг <span class="dr">(Анжелик)</span>.<br>Гель: 1,5 мг (0,06% — 2,5 г) / 1 мг (0,1% — 1 г), через 3–5 лет — снижение; можно стартовать с 0,75 мг (1,25 г 0,06%) / 0,5 мг (0,5 г 0,1%) + гестаген непрерывно: прогестерон 100 мг/сут (при ↑ дозы эстрогена — 200 мг), дидрогестерон 10 мг (20 мг), ЛНГ-ВМС 52 мг или прогестерон вагинальный гель 90 мг 2 р/нед</td></tr>
+<tr><td>Постменопауза — ультранизкие дозы</td><td>Монофазная непрерывная</td><td>Эстрадиол 0,5 мг + дидрогестерон 2,5 мг <span class="dr">(Фемостон мини)</span>; эстрадиол 0,5 мг + дроспиренон 0,25 мг <span class="dr">(Анжелик микро)</span></td></tr>
+<tr><td>Постменопауза ≥12 мес или сразу после двусторонней овариэктомии; остеопороз; сниженное либидо</td><td>Тиболон</td><td>Тиболон 2,5 мг 1 р/сут <span class="dr">(Ливиал, Ледибон)</span> ≈ 1–1,5 мг эстрадиола; не стимулирует эндометрий, МЖ, рост миомы</td></tr>
+<tr><td>Матки нет (гистерэктомия), любая фаза климактерия</td><td>Монотерапия <b>эстрогенами</b>, непрерывно</td><td>Эстрадиол гель <span class="dr">(Эстрожель, Дивигель)</span> или эстрадиол таблетки 2 мг <span class="dr">(Прогинова)</span></td></tr>
+<tr><td>Гистерэктомия по поводу аденомиоза, распространённый эндометриоз в анамнезе</td><td>Комбинированная или тиболон</td><td>Эстроген + гестаген даже без матки, или тиболон 2,5 мг</td></tr>
+</tbody></table>
+<div class="sub">Шкала доз эстрадиола <span class="tag kr">КР</span></div>
+<table class="s"><thead><tr><th>Форма</th><th>Стандартная</th><th>Низкая</th><th>Ультранизкая / макс.</th></tr></thead><tbody>
+<tr><td>Таблетки (эстрадиол)</td><td data-l="Стандартная">2 мг</td><td data-l="Низкая">1 мг</td><td data-l="Ультранизкая">0,5 мг</td></tr>
+<tr><td>Гель 0,06%</td><td data-l="Стандартная">1,5 мг (2,5 г)</td><td data-l="Низкая">#0,75 мг (1,25 г)</td><td data-l="Максимум">3 мг (5 г)</td></tr>
+<tr><td>Гель 0,1%</td><td data-l="Стандартная">1 мг (1 г)</td><td data-l="Низкая">0,5 мг (0,5 г)</td><td data-l="Максимум">1,5 мг (1,5 г)</td></tr>
+</tbody></table>
+</div></details>
+
+<details class="c"><summary><div class="ic">🔄</div><div><div class="st">Переход с циклической на непрерывную МГТ</div><div class="sd">Когда переводить на монофазный режим</div></div><div class="chev">›</div></summary><div class="body">
+<ul>
+<li>Через <b>1–2 года</b> циклической низкодозированной МГТ, если старт был в возрасте <b>старше 50 лет</b></li>
+<li>По достижении среднего возраста менопаузы (<b>51–52 года</b>), если МГТ начата до 50 лет</li>
+<li>Менструальноподобная реакция стала скудной/мажущей или отсутствует <b>&gt;2 циклов подряд</b></li>
+<li>Желание пациентки прекратить менструальноподобную реакцию — после ≥12 мес низкодозированной циклической МГТ (чтобы избежать прорывных кровотечений)</li>
+</ul>
+<div class="box b-ok">Отмена: единого правила (постепенно или сразу) нет. Часть женщин остаётся на ультранизких дозах. Продолжение после 65 лет — возможно в минимальной дозе при персистирующих приливах под наблюдением.</div>
+</div></details>
+
+<details class="c"><summary><div class="ic">⛔</div><div><div class="st">Противопоказания к МГТ</div><div class="sd">Абсолютные и относительные</div></div><div class="chev">›</div></summary><div class="body">
+<div class="box b-no"><b>Абсолютные:</b> кровотечение из половых путей неясного генеза; РМЖ (диагностированный, подозреваемый, в анамнезе); злокачественные эстрогензависимые опухоли (эндометрий, яичники, матка); острые/хронические заболевания печени (до нормализации проб), опухоли печени; артериальные и венозные тромбозы/тромбоэмболии сейчас или в анамнезе (ТГВ, ТЭЛА, ИМ, инсульт); тромбофилии высокого риска (дефицит АТ III, протеина C, S), АФС; <b>субмукозная миома</b>; <b>полип эндометрия</b>; кожная порфирия; аллергия к компонентам; прогестагензависимые опухоли, например менингиома (для гестагенов).</div>
+<div class="box b-w"><b>Относительные</b> (учесть при выборе типа, дозы, пути): постменопауза &gt;10 лет на старте; курение; ИМТ ≥30; семейный анамнез ВТЭ; повышенный риск РМЖ; АГ/преэклампсия/ГСД/ПОНРП в анамнезе; мигрень; неконтролируемая АГ; коллагенозы; эпилепсия; миома; эндометриоз.</div>
+<ul>
+<li>Миома небольшая (интрамуральная/субсерозная) — МГТ возможна, <b>УЗИ каждые 6 мес</b>; рост/новые узлы → отменить</li>
+<li>Субмукозный узел / полип эндометрия → сначала операция (гистероскопия), после гистологии — решать вопрос о МГТ</li>
+<li>Семейный анамнез РМЖ — не противопоказание; носительство BRCA1/2 без РМЖ — консультация онколога, селективный скрининг</li>
+<li>Варикоз, курение (с учётом всех факторов), контролируемая АГ — МГТ возможна</li>
+</ul>
+</div></details>
+
+<details class="c"><summary><div class="ic">🔬</div><div><div class="st">Обследование перед МГТ и контроль на фоне</div><div class="sd">Что сдать до старта, когда оценивать</div></div><div class="chev">›</div></summary><div class="body">
+<div class="sub">Обязательно до старта <span class="tag kr">КР</span></div>
+<ul>
+<li><b>УЗИ ОМТ</b>: эндометрий ≤4 мм — МГТ можно.<br>&gt;4 мм в менопаузальном переходе → гестаген 10 дней, контрольное УЗИ на 5–7 день кровотечения (или через 7–14 дней после окончания гестагена).<br>&gt;4 мм в постменопаузе → гистероскопия + раздельное диагностическое выскабливание или аспирационная биопсия</li>
+<li><b>Молочные железы</b>: осмотр, пальпация; маммография в 2 проекциях с 40 лет, УЗИ МЖ до 40 лет (BI-RADS, плотность ACR). Плотность C/D → дополнительно УЗИ; BI-RADS не 1–2, узлы, C/D, факторы риска → онколог/маммолог</li>
+<li><b>ПАП-тест</b> (если нет результатов диспансеризации)</li>
+<li>АД, ОАК, глюкоза/HbA1c, общий белок, билирубин, креатинин, липидограмма; FRAX (с 40 лет), ДЭРА — при среднем риске/факторах риска</li>
+</ul>
+<div class="sub">По показаниям</div>
+<ul><li>УЗИ ОБП, АЛТ, АСТ, ГГТ; коагулограмма; мутации протромбина G20210A и фактора V Лейден G1691A; колоноскопия</li></ul>
+<div class="sub">Контроль на фоне МГТ</div>
+<ul>
+<li>Эффект и переносимость — через <b>1–3 мес</b>, затем через 6 мес, далее <b>1 р/год</b> (переоценка польза/риск)</li>
+<li>УЗИ ОМТ — через 6–12 мес, далее 1 р/год; при миоме — каждые 6 мес. Кровотечение после 6 мес непрерывной МГТ → УЗИ ± биопсия эндометрия</li>
+<li>Маммография по возрасту; липидограмма, глюкоза, АД — 1 р/год; ДЭРА — 1 р в 1–2 года</li>
+</ul>
+</div></details>
+
+<!-- ================= ЗГТ ================= -->
+<h2 class="grp" id="g2">ЗГТ у молодых (КР «Менопауза», «Аменорея», «Внутриматочные синехии»)</h2>
+
+<details class="c"><summary><div class="ic">🧬</div><div><div class="st">ПНЯ и ранняя менопауза</div><div class="sd">Спонтанная, хирургическая, после химио-/лучевой терапии</div></div><div class="chev">›</div></summary><div class="body">
+<ul>
+<li>Начать <b>сразу после постановки диагноза</b>, вести <b>минимум до 50–51 года</b></li>
+<li>Режим — эстроген + гестаген <b>циклически</b> (матка есть); при длительном приёме можно перейти на непрерывный монофазный</li>
+<li>Учитывать предпочтения по пути введения и <b>потребность в контрацепции</b></li>
+</ul>
+<table class="s"><thead><tr><th>Компонент</th><th>Дозы</th></tr></thead><tbody>
+<tr><td>Эстроген — гель 0,06%</td><td data-l="Доза">1,5–2,25 мг/сут (2,5–3,75 г), максимум 3 мг (5 г) <span class="dr">(Эстрожель)</span></td></tr>
+<tr><td>Эстроген — гель 0,1%</td><td data-l="Доза">1,0–1,5 мг/сут (1–1,5 г) <span class="dr">(Дивигель)</span></td></tr>
+<tr><td>Эстроген — таблетки</td><td data-l="Доза">Эстрадиол 2 мг/сут (стандартные, при недостаточном эффекте — высокие дозы)</td></tr>
+<tr><td>Гестаген</td><td data-l="Доза">#Прогестерон микронизированный** 200–400 мг/сут внутрь/вагинально или #дидрогестерон** 10–20 мг/сут — <b>12–14 дней</b> во II фазу</td></tr>
+<tr><td>Фиксированные комбинации</td><td data-l="Доза">Эстрадиол 2 мг + дидрогестерон 10 мг <span class="dr">(Фемостон 2/10)</span>; эстрадиол 2 мг + левоноргестрел 150 мкг <span class="dr">(Климонорм)</span> — циклически</td></tr>
+</tbody></table>
+<p class="dr">Контроль: ДЭРА 1 р в 1–2 года, ФСГ/ЛГ/эстрадиол — через 3–6 мес, УЗИ ОМТ 1 р/год.</p>
+</div></details>
+
+<details class="c"><summary><div class="ic">🧠</div><div><div class="st">Гипогонадотропная аменорея, дисгенезия гонад</div><div class="sd">Синдром Каллмана, Шихана; дисгенезия (при Y — после гонадэктомии)</div></div><div class="chev">›</div></summary><div class="body">
+<p>ЗГТ эстрадиолом + гестаген <b>в циклическом режиме</b>, стандартные дозы — профилактика ССЗ и потери МПК.</p>
+<ul>
+<li>#Эстрадиол гель 0,06% — 1,5 мг (2,5 г) или 0,1% — 1 мг (1 г) в сутки</li>
+<li>#Эстрадиола валерат 2 мг/сут внутрь <span class="dr">(Прогинова)</span></li>
+<li>+ #прогестерон микронизированный** 200 мг/сут <b>12 дней</b> или #дидрогестерон** 10 мг/сут <b>14 дней</b> во II фазу (дисгенезия гонад — 12–14 дней)</li>
+<li>Фиксированно: #эстрадиол 2 мг + дидрогестерон 10 мг <span class="dr">(Фемостон 2/10)</span> или эстрадиола валерат 2 мг + норгестрел 0,5 мг <span class="dr">(Цикло-Прогинова)</span> — только взрослым</li>
+</ul>
+</div></details>
+
+<details class="c"><summary><div class="ic">🥗</div><div><div class="st">Функциональная гипоталамическая аменорея (ФГА)</div><div class="sd">Сначала образ жизни, ЗГТ — через 6 мес</div></div><div class="chev">›</div></summary><div class="body">
+<ul>
+<li>1-й этап: диетолог (восстановление массы и рациона), КПТ, консультация психиатра при РПП, депрессии, тревоге; менструации возвращаются через 6–12 мес после нормализации массы</li>
+<li>Нет эффекта <b>6 мес</b> → ЗГТ эстрадиол + гестаген <b>циклически</b>, стандартные дозы (в т.ч. фиксированные формы)</li>
+<li><b>Трансдермальный эстрадиол предпочтительнее</b> — сильнее влияет на МПК</li>
+</ul>
+<div class="box b-no">КОК для профилактики потери МПК при аменорее <b>не назначать</b>: в отличие от ЗГТ, они подавляют ИФР-1 и не дают анаболического эффекта на кость.</div>
+</div></details>
+
+<details class="c"><summary><div class="ic">🩹</div><div><div class="st">После рассечения внутриматочных синехий</div><div class="sd">Восстановление эндометрия и цикла</div></div><div class="chev">›</div></summary><div class="body">
+<ul><li>ЗГТ эстрогенами в <b>стандартных или высоких дозах</b> (внутрь или трансдермально) + гестаген <b>циклически</b>, в т.ч. фиксированными формами — при отсутствии противопоказаний</li></ul>
+</div></details>
+
+<!-- ================= Локальная ================= -->
+<h2 class="grp" id="g3">Локальная гормональная терапия (ГУМС)</h2>
+
+<details class="c"><summary><div class="ic">💧</div><div><div class="st">Вагинальный эстриол</div><div class="sd">Сухость, диспареуния, атрофия, рецидивирующие ИМП</div></div><div class="chev">›</div></summary><div class="body">
+<table class="s"><thead><tr><th>Доза</th><th>Препарат</th><th>Схема</th></tr></thead><tbody>
+<tr><td>Стандартная 0,5 мг</td><td data-l="Препарат">Эстриол крем/свечи <span class="dr">(Овестин, Эстриол)</span></td><td data-l="Схема"><b>Ежедневно 2–4 нед</b> (насыщение) → <b>2 р/нед</b> длительно (поддержка)</td></tr>
+<tr><td>Низкая 0,2 мг</td><td data-l="Препарат">Эстриол 0,2 мг + лактобактерии + прогестерон 2 мг <span class="dr">(Триожиналь)</span></td><td data-l="Схема">Вульвовагинальная атрофия, эстрогендефицит — по инструкции</td></tr>
+<tr><td>Ультранизкая 0,05 мг</td><td data-l="Препарат">Эстриол гель <span class="dr">(Блиссель)</span></td><td data-l="Схема">По инструкции</td></tr>
+<tr><td>Ультранизкая 0,03 мг</td><td data-l="Препарат">Эстриол 0,03 мг + лактобактерии <span class="dr">(Гинофлор Э)</span></td><td data-l="Схема">По инструкции</td></tr>
+</tbody></table>
+<ul>
+<li>Возрастных ограничений нет, можно после 60 лет</li>
+<li><b>Гестаген добавлять не нужно</b>: влияния на эндометрий нет</li>
+<li>Можно вместе с системной МГТ, если её не хватает для ГУМС; можно с лубрикантами</li>
+<li>Терапия длительная: после отмены симптомы возвращаются через 1–3 мес</li>
+<li>Плюс: увлажнители длительного действия, тренировка мышц тазового дна; эффект оценивать через 2–3 мес</li>
+</ul>
+</div></details>
+
+<!-- ================= Негормональная ================= -->
+<h2 class="grp" id="g4">Если МГТ противопоказана или пациентка отказывается</h2>
+
+<details class="c"><summary><div class="ic">🌿</div><div><div class="st">Негормональная терапия приливов</div><div class="sd">СИОЗС/СИОЗСН, цимицифуга, бета-аланин, пептиды эпифиза</div></div><div class="chev">›</div></summary><div class="body">
+<table class="s"><thead><tr><th>Препарат</th><th>Доза</th></tr></thead><tbody>
+<tr><td>#Пароксетин**</td><td data-l="Доза">10–20 мг/сут</td></tr>
+<tr><td>#Циталопрам / #эсциталопрам</td><td data-l="Доза">10–20 мг/сут</td></tr>
+<tr><td>#Флуоксетин**</td><td data-l="Доза">20 мг/сут</td></tr>
+<tr><td>#Венлафаксин (СИОЗСН)</td><td data-l="Доза">75 (37,5–150) мг/сут</td></tr>
+<tr><td>Цимицифуги корневищ экстракт</td><td data-l="Доза">По инструкции <span class="dr">(Климадинон, Ци-Клим)</span> — лёгкие и умеренные приливы</td></tr>
+<tr><td>Бета-аланин</td><td data-l="Доза">По инструкции <span class="dr">(Клималанин)</span> — лёгкие и умеренные приливы</td></tr>
+<tr><td>Полипептиды эпифиза КРС</td><td data-l="Доза">По инструкции; противопоказан при предраке и раке, в т.ч. эстрогензависимых опухолях</td></tr>
+</tbody></table>
+<ul>
+<li>СИОЗС/СИОЗСН: курс <b>3–6 мес</b>; начинать с минимальной дозы; отменять постепенно, <b>≥2 нед</b></li>
+<li>Принимает <b>тамоксифен</b> → венлафаксин, эсциталопрам, циталопрам; <b>избегать</b> пароксетина, флуоксетина, сертралина. С ингибиторами ароматазы СИОЗС совместимы</li>
+<li>Без лекарств: снижение массы, КПТ, клинический гипноз, акупунктура; фитоэстрогены (ресвератрол, изофлавоны сои, красный клевер)</li>
+</ul>
+</div></details>
+
+<!-- ================= КОК ================= -->
+<h2 class="grp" id="g5">КОК, КГК и гестагены по показаниям</h2>
+
+<details class="c"><summary><div class="ic">😣</div><div><div class="st">Тяжёлый ПМС / ПМДР</div><div class="sd">КОК с дроспиреноном 24/4 — 1-я линия</div></div><div class="chev">›</div></summary><div class="body">
+<ul>
+<li><b>1-я линия</b> (взрослые и подростки после установления регулярного цикла): <b>ЭЭ 20 мкг + дроспиренон 3 мг, режим 24/4</b> <span class="dr">(Джес; с левомефолатом — Джес Плюс)</span> — показание зарегистрировано в РФ</li>
+<li>Режим 24/4 лучше 21/7 (меньше симптомов отмены); <b>непрерывный</b> приём предпочтительнее циклического; оценка через 2–3 цикла; лечение длительное</li>
+<li>Гестагены — <b>2-я линия</b> (противопоказаны КОК, не нужна контрацепция, олигоменорея): дидрогестерон** 10 мг 2 р/сут с 11 по 25 д.ц. (или последние 14 дней цикла); прогестерон микронизированный** 200–400 мг/сут с 17 по 26 д.ц.</li>
+<li>Рефрактерный ПМС (взрослые): аГнРГ + add-back — монофазная эстроген-гестагенная терапия или #тиболон 2,5 мг/сут; подросткам аГнРГ не применяют</li>
+</ul>
+</div></details>
+
+<details class="c"><summary><div class="ic">🩸</div><div><div class="st">АМК — гормональный гемостаз и поддержка</div><div class="sd">КОК, гестагены, ЛНГ-ВМС</div></div><div class="chev">›</div></summary><div class="body">
+<ul>
+<li><b>Гемостаз КОК</b>: ЭЭ не более <b>100 мкг/сут</b>, по 1 таб с равными интервалами до остановки, затем снижение до 1 таб/сут; <b>всего 21 день</b> от начала. Далее КОК по контрацептивной схеме ещё несколько месяцев <span class="dr">(ЭЭ+дроспиренон, ЭЭ+диеногест, ЭВ+диеногест — Клайра)</span></li>
+<li>Гестагены: норэтистерон 5 мг 2–3 р/сут или дидрогестерон 10 мг 2 р/сут с 5 по 26 д.ц., 3–6 циклов</li>
+<li><b>ЛНГ-ВМС 52 мг</b> <span class="dr">(Мирена, Левосерт)</span> — самый эффективный вариант, на 5–8 лет</li>
+<li>аГнРГ — при неэффективности или сочетании с миомой/эндометриозом</li>
+<li>Контроль через 3 мес: PBAC, Hb; биопсия эндометрия, если АМК сохраняется на фоне терапии</li>
+</ul>
+</div></details>
+
+<details class="c"><summary><div class="ic">⚡</div><div><div class="st">Первичная дисменорея</div><div class="sd">КОК и гестагены — после НПВС</div></div><div class="chev">›</div></summary><div class="body">
+<ul>
+<li>КОК — <b>2-я линия</b> (с менархе): ЭЭ + дроспиренон, ЭЭ + диеногест <span class="dr">(Ярина, Джес, Жанин, Силует)</span>; 21/7, 24/4 или пролонгированно, ≥3 циклов</li>
+<li>Гестагены: диеногест 2 мг непрерывно <span class="dr">(Визанна, Зафрилла)</span>, дезогестрел <span class="dr">(Лактинет, Чарозетта)</span>, имплант этоногестрела, #ЛНГ-ВМС 52 мг с 18 лет; вагинальное кольцо <span class="dr">(НоваРинг)</span></li>
+<li>Оценка через 3 мес (ВАШ); нет эффекта НПВС + КОК за 3–6 мес → обследовать на эндометриоз</li>
+</ul>
+</div></details>
+
+<details class="c"><summary><div class="ic">🎯</div><div><div class="st">Эндометриоз</div><div class="sd">Гестагены — 1-я линия; КОК — контрацепция и профилактика рецидива</div></div><div class="chev">›</div></summary><div class="body">
+<ul>
+<li><b>Прогестагены — 1-я линия</b>: диеногест 2 мг 1 р/сут непрерывно <span class="dr">(Визанна, Зафрилла)</span>, оценка через 6 мес, далее длительно; при планировании беременности — циклический приём (дидрогестерон 10 мг 2–3 р/сут)</li>
+<li><b>КОК</b>: для контрацепции, как эмпирическая терапия, для профилактики рецидива после операции; непрерывно или пролонгированно</li>
+<li>аГнРГ 3–6 мес; дольше 6 мес — add-back (эстрадиол 1 мг + дидрогестерон 5 мг)</li>
+<li>Гормоны <b>перед операцией не назначать</b>: маскируют очаги</li>
+<li>Эндометриоз в анамнезе + МГТ → только комбинированная или тиболон, даже после гистерэктомии</li>
+</ul>
+</div></details>
+
+<details class="c"><summary><div class="ic">🧔</div><div><div class="st">СПЯ и гиперандрогения, нВДКН</div><div class="sd">КГК — 1-я линия; антиандрогены — через 6 мес</div></div><div class="chev">›</div></summary><div class="body">
+<ul>
+<li><b>КГК — 1-я линия</b> при нарушении цикла + гирсутизме/акне (кому не нужна беременность): ЭЭ 20–30 мкг или натуральные эстрогены, с учётом критериев приемлемости; гестаген <b>без остаточной андрогенной активности</b> <span class="dr">(Ярина, Джес, Жанин, Белара)</span></li>
+<li>ЭЭ 35 мкг + ципротерон <span class="dr">(Диане-35)</span> — эффективнее при гирсутизме, но <b>не 1-я линия</b> из-за риска ВТЭ</li>
+<li>Гипергомоцистеинемия/дефицит фолатов → КГК с фолатами</li>
+<li>Подростки с «формирующимся СПЯ», гирсутизмом и нерегулярным циклом — КГК можно рассмотреть</li>
+<li>Через <b>6 мес</b> КГК без эффекта по гирсутизму → + антиандроген; монотерапия антиандрогеном — только если КГК противопоказаны или плохо переносятся; <b>нужна надёжная контрацепция</b></li>
+<li>#Спиронолактон** 50–100 мг/сут; #финастерид 2,5–5 мг/сут или #флутамид 250–500 мг/сут, 6–12 мес (гепатотоксичны, в РФ при гирсутизме не зарегистрированы)</li>
+<li>Ципротерон** &gt;10 мг/сут при гирсутизме <b>не рекомендован</b> (риск менингиомы)</li>
+<li>Противопоказаны КОК → дидрогестерон 10 мг 2 р/сут с 16 по 25 д.ц.</li>
+<li><b>нВДКН</b> вне планирования беременности: КОК с антиандрогенным эффектом (ЭЭ + дроспиренон, хлормадинон, ципротерон) ± антиандрогены</li>
+</ul>
+<p class="dr">Контроль: цикл — через 3 мес, гирсутизм — через 6 мес (эффект через 6–12 мес).</p>
+</div></details>
+
+<details class="c"><summary><div class="ic">🔴</div><div><div class="st">Миома матки</div><div class="sd">КГК и ЛНГ-ВМС — при АМК</div></div><div class="chev">›</div></summary><div class="body">
+<ul>
+<li>КГК — для контрацепции и купирования АМК</li>
+<li>ЛНГ-ВМС 52 мг — уменьшает кровопотерю на 74–97%, на размер узлов не влияет. <b>Противопоказана</b> при субмукозном узле и центрипетальном росте</li>
+<li>МГТ при небольшой интрамуральной/субсерозной миоме — допустима, УЗИ каждые 6 мес</li>
+</ul>
+</div></details>
+
+<details class="c"><summary><div class="ic">🧫</div><div><div class="st">Гиперплазия эндометрия без атипии</div><div class="sd">ЛНГ-ВМС — 1-я линия, гестагены — альтернатива</div></div><div class="chev">›</div></summary><div class="body">
+<ul>
+<li>После гистологической верификации: <b>ЛНГ-ВМС 52 мг</b> ≥6 мес, при хорошей переносимости — до 5 лет (эффективность до 92%)</li>
+<li>Альтернатива — гестагены <b>непрерывно</b> или в пролонгированном циклическом режиме (циклический менее эффективен; оральные — до 72%): дидрогестерон 10 мг 2 р/сут; прогестерон микронизированный 200 мг 2 р/сут; норэтистерон 5 мг 2–3 р/сут — 6 мес</li>
+<li><b>Биопсия эндометрия через 6 мес обязательна</b>; регресс в 2 последовательных биопсиях → снятие с учёта</li>
+<li>ГЭ + миома/эндометриоз → возможны аГнРГ</li>
+</ul>
+</div></details>
+
+<!-- ================= Не назначать ================= -->
+<h2 class="grp" id="g6">Когда гормоны не назначать</h2>
+
+<details class="c" open><summary><div class="ic">🚫</div><div><div class="st">Не рекомендовано по КР</div><div class="sd">Частые ошибки назначения</div></div><div class="chev">›</div></summary><div class="body">
+<ul>
+<li><b>Функциональные кисты и другие доброкачественные образования яичников</b> — КОК, гестагены и ЛНГ-ВМС не назначать: регресс не ускоряют, при выжидательной тактике результат тот же</li>
+<li><b>Аменорея</b> — КОК для профилактики потери МПК не назначать (нужна ЗГТ)</li>
+<li><b>Эндометриоз</b> — гормоны перед операцией не назначать</li>
+<li><b>Тестостерон</b> для лечения климактерических симптомов не назначать</li>
+<li><b>Ципротерон &gt;10 мг/сут</b> при гирсутизме не назначать</li>
+<li><b>МГТ</b> при кровотечении неясного генеза, субмукозной миоме, полипе эндометрия — сначала обследование/операция</li>
+<li><b>ЛНГ-ВМС</b> при субмукозной миоме и центрипетальном росте узла не ставить</li>
+</ul>
+</div></details>
+
+<p class="cr"><a href="https://t.me/drTemirbieva" target="_blank" rel="noopener" onclick="var w=window.Telegram&amp;&amp;Telegram.WebApp;if(w&amp;&amp;w.initData){w.openTelegramLink(this.href);return false}" style="color:inherit;text-decoration:underline dotted">Created by Temirbieva Polina</a></p>
+</main>
+<script>
+(function(){var tg=window.Telegram&&window.Telegram.WebApp;if(!tg||!tg.initData&&tg.platform==='unknown')return;
+try{tg.ready();tg.expand();}catch(e){}try{tg.disableVerticalSwipes&&tg.disableVerticalSwipes();}catch(e){}
+try{tg.setHeaderColor('#9b2c5a');tg.setBackgroundColor('#f6f4f1');}catch(e){}
+try{tg.BackButton.show();tg.BackButton.onClick(function(){location.href='index.html';});}catch(e){}})();
+// stacked-table labels
+document.querySelectorAll('table.s').forEach(function(t){var h=[].map.call(t.querySelectorAll('thead th'),function(x){return x.textContent});
+ t.querySelectorAll('tbody tr').forEach(function(r){[].forEach.call(r.children,function(td,i){if(!td.hasAttribute('data-l'))td.setAttribute('data-l',h[i]||'')})})});
+// search
+var cards=[].slice.call(document.querySelectorAll('details.c')),grps=[].slice.call(document.querySelectorAll('h2.grp')),
+ orig=cards.map(function(c){return c.querySelector('.body').innerHTML}),openInit=cards.map(function(c){return c.open}),q=document.getElementById('q'),none=document.getElementById('none');
+function esc(s){return s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')}
+function hl(node,re){if(node.nodeType===3){var m=node.nodeValue.match(re);if(!m)return;var sp=document.createElement('span');sp.innerHTML=node.nodeValue.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(re,'<mark>$1</mark>');node.parentNode.replaceChild(sp,node);return}
+ if(node.nodeType===1&&node.tagName!=='MARK')[].slice.call(node.childNodes).forEach(function(n){hl(n,re)})}
+function run(){var v=q.value.trim().toLowerCase().replace(/ё/g,'е');var any=false;
+ cards.forEach(function(c,i){var b=c.querySelector('.body');b.innerHTML=orig[i];
+  if(!v){c.classList.remove('hide');c.open=openInit[i];return}
+  var txt=c.textContent.toLowerCase().replace(/ё/g,'е');var ok=txt.indexOf(v)>=0;c.classList.toggle('hide',!ok);
+  if(ok){any=true;c.open=true;hl(b,new RegExp('('+esc(q.value.trim())+')','gi'))}});
+ grps.forEach(function(g){var n=g.nextElementSibling,vis=!v;while(n&&!(n.tagName==='H2')){if(n.matches&&n.matches('details.c')&&!n.classList.contains('hide'))vis=true;n=n.nextElementSibling}g.classList.toggle('hide',!vis)});
+ none.style.display=(v&&!any)?'block':'none'}
+q.addEventListener('input',run);
+</script>
+</body></html>
