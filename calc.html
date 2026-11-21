@@ -211,7 +211,7 @@ input:focus,select:focus{outline:2px solid #f3c6d8;border-color:var(--acc)}
 <div class="body">
  <div class="row"><label class="f">Масса, кг<input type="text" autocomplete="off" id="ds-w" inputmode="decimal" step="0.1"></label><label class="f">Рост, см (для метотрексата)<input type="text" autocomplete="off" id="ds-h" inputmode="decimal"></label></div>
  <div class="res" id="r-ds">Введите массу тела</div>
- <div class="note">Транексамовая кислота: 25 мг/кг (не более 1 г на приём) 2–3 раза в сутки до 4–5 дней — <span class="tag kr">КР «АМК»</span>. Гентамицин — схемы стационарного лечения ВЗОМТ, <span class="tag kr">КР «ВЗОМТ»</span>; при ожирении и сниженной функции почек дозу корректируют. #Метотрексат 50 мг/м² в/м — внематочная беременность (решение консилиума). Площадь поверхности тела — по Мостеллеру.</div>
+ <div class="note">Транексамовая кислота: взрослым — 3 г/сут (в тяжёлых случаях до 4 г/сут) 4 дня; подросткам — 25 мг/кг (не более 1 г на приём) 2–3 раза в сутки 4 дня, при остром АМК — в/в — <span class="tag kr">КР «АМК»</span>. Гентамицин — схемы стационарного лечения ВЗОМТ, <span class="tag kr">КР «ВЗОМТ»</span>; при ожирении и сниженной функции почек дозу корректируют. #Метотрексат 50 мг/м² в/м — внематочная беременность (решение консилиума). Площадь поверхности тела — по Мостеллеру.</div>
 </div></details>
 
 <details class="calc" id="c-gc"><summary><div class="ic">🔁</div><div><div class="st">Пересчёт глюкокортикоидов</div><div class="sd">Гидрокортизон ↔ преднизолон ↔ метилпреднизолон ↔ дексаметазон</div></div><div class="chev">›</div></summary>
@@ -402,7 +402,8 @@ var CALC = (function () {
       else if (score === 3) { level = 'mid'; rec = 'НМГ с 28 недель беременности + после родов не менее 6 недель'; }
       else { level = 'low'; rec = 'Медикаментозная профилактика не показана; ранняя активизация, достаточная гидратация. Повторная оценка при госпитализации и после родов'; }
     } else {
-      if (keys.indexOf('prevVTE') >= 0 || antenatalLMWH || keys.indexOf('hiThromb') >= 0) { level = 'high'; rec = 'НМГ не менее 6 недель после родов'; }
+      // RCOG 37a: высокий риск после родов — ВТЭО в анамнезе, НМГ во время беременности, тромбофилия высокого риска, тромбофилия низкого риска + семейный анамнез ВТЭО
+      if (keys.indexOf('prevVTE') >= 0 || antenatalLMWH || keys.indexOf('hiThromb') >= 0 || (keys.indexOf('loThromb') >= 0 && keys.indexOf('famHx') >= 0)) { level = 'high'; rec = 'НМГ не менее 6 недель после родов'; }
       else if (score >= 2) { level = 'mid'; rec = 'НМГ не менее 10 дней после родов (при сохранении факторов риска или ≥3 факторах — рассмотреть продление до 6 недель)'; }
       else { level = 'low'; rec = 'Ранняя активизация, гидратация; НМГ не требуется'; }
     }
@@ -474,8 +475,9 @@ var CALC = (function () {
     if (!(w >= 30 && w <= 250)) return { error: 'Масса: 30–250 кг' };
     var r = {};
     var txa = Math.min(25 * w, 1000);
-    r.txaPo = Math.round(txa) + ' мг на приём, 2–3 раза в сутки' + (25 * w > 1000 ? ' (ограничено максимальной разовой дозой 1 г)' : '');
-    r.txaIv = Math.round(Math.min(10 * w, 1000)) + '–' + Math.round(Math.min(15 * w, 1000)) + ' мг в/в (10–15 мг/кг, не более 1 г)';
+    r.txaAdult = '3 г/сут (в тяжёлых случаях до 4 г/сут), 4 дня';
+    r.txaPo = Math.round(txa) + ' мг на приём, 2–3 раза в сутки, 4 дня' + (25 * w > 1000 ? ' (ограничено максимальной разовой дозой 1 г)' : '');
+    r.txaIv = Math.round(txa) + ' мг в/в на введение (25 мг/кг, не более 1 г), 2–3 раза в сутки';
     r.gentLoad = Math.round(2 * w) + ' мг в/в (2 мг/кг) — нагрузочная';
     r.gentMaint = Math.round(1.5 * w) + ' мг в/в каждые 8 ч (1,5 мг/кг)';
     r.gentOnce = Math.round(3 * w) + '–' + Math.round(5 * w) + ' мг в/в 1 раз в сутки (3–5 мг/кг)';
@@ -603,7 +605,7 @@ function calcOH(){if($('oh-v').value==='')return show('r-oh','','Введите 
  show('r-oh',t[0],'<div class="big">'+t[1]+'</div>'+f1(r.nmol)+' нмоль/л'+(r.level==='mid'?' — генетическое исследование CYP21A2 или стимуляционная проба; консультация эндокринолога':r.level==='high'?' — консультация эндокринолога':''));
 }
 function calcDS(){if($('ds-w').value==='')return show('r-ds','','Введите массу тела');var r=C.doses($('ds-w').value,$('ds-h').value);if(r.error)return show('r-ds','high',esc(r.error));
- var h='<div class="sub" style="margin-top:0">Транексамовая кислота</div><ul><li>Внутрь: '+r.txaPo+'</li><li>В/в при остром АМК: '+r.txaIv+'</li></ul><div class="sub">Гентамицин (ВЗОМТ, стационар)</div><ul><li>'+r.gentLoad+', затем '+r.gentMaint+'</li><li>или '+r.gentOnce+'</li></ul><div class="sub">Эноксапарин (профилактика ВТЭО)</div><ul><li>'+r.enox+'</li></ul>';
+ var h='<div class="sub" style="margin-top:0">Транексамовая кислота</div><ul><li>Взрослые: '+r.txaAdult+'</li><li>Подростки, внутрь: '+r.txaPo+'</li><li>Подростки, в/в при остром АМК: '+r.txaIv+'</li></ul><div class="sub">Гентамицин (ВЗОМТ, стационар)</div><ul><li>'+r.gentLoad+', затем '+r.gentMaint+'</li><li>или '+r.gentOnce+'</li></ul><div class="sub">Эноксапарин (профилактика ВТЭО)</div><ul><li>'+r.enox+'</li></ul>';
  h+=r.mtx?'<div class="sub">#Метотрексат</div><ul><li>ППТ '+f1(r.bsa)+' м² → '+r.mtx+'</li></ul>':'<div class="note">Укажите рост — рассчитаю метотрексат по площади поверхности тела.</div>';
  show('r-ds','ok',h);
 }
