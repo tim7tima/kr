@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <link rel="apple-touch-icon" href="apple-touch-icon.png"><link rel="icon" type="image/png" href="icon-192.png"><link rel="manifest" href="manifest.json"><meta name="theme-color" content="#9b2c5a"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Ассистент гинеколога">
-<title>Калькуляторы — акушерство и гинекология</title>
+<title>Калькуляторы — Ассистент гинеколога</title>
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 <style>
 :root{--acc:#9b2c5a;--ink:#1f2328;--mut:#6b7280;--line:#e7e3dd;--bg:#f6f4f1;--ok:#047857;--okb:#ecfdf5;--mid:#b45309;--midb:#fff7ed;--hi:#b91c1c;--hib:#fef2f2}
@@ -11,7 +11,7 @@ main{max-width:760px;margin:0 auto;padding:12px 10px 50px}
 .home{display:inline-block;margin:0 0 10px;padding:6px 12px;border-radius:20px;background:#fbeaf1;color:var(--acc);text-decoration:none;font-size:13.5px}
 .top{background:linear-gradient(135deg,#9b2c5a,#c2416f);color:#fff;border-radius:16px;padding:16px 18px;margin-bottom:12px}
 .top h1{margin:0 0 4px;font-size:21px}.top p{margin:0;font-size:13.5px;opacity:.95}
-nav.chips{position:sticky;top:0;z-index:5;display:flex;gap:6px;overflow-x:auto;padding:8px 2px;background:var(--bg);scrollbar-width:none}nav.chips::-webkit-scrollbar{display:none}
+nav.chips{position:sticky;top:0;z-index:5;display:flex;flex-wrap:wrap;gap:6px;padding:8px 2px;background:var(--bg)}nav.chips::-webkit-scrollbar{display:none}
 nav.chips a{flex:0 0 auto;white-space:nowrap;padding:7px 12px;border-radius:20px;background:#fff;border:1px solid var(--line);color:var(--ink);text-decoration:none;font-size:13.5px}
 h2.grp{font-size:13px;text-transform:uppercase;letter-spacing:.6px;color:var(--mut);margin:18px 4px 8px}
 details.calc{background:#fff;border:1px solid var(--line);border-radius:14px;margin-bottom:10px;overflow:hidden}
@@ -39,14 +39,14 @@ input:focus,select:focus{outline:2px solid #f3c6d8;border-color:var(--acc)}
 .res ul{margin:6px 0 0;padding-left:18px}.res li{margin:3px 0}
 .kv{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;margin-top:6px}.kv b{white-space:nowrap}
 .note{font-size:12px;color:var(--mut);margin-top:10px;line-height:1.45}
-.tag{display:inline-block;font-size:10.5px;padding:1px 7px;border-radius:10px;font-weight:700}.kr{background:#dcfce7;color:#166534}.sm{background:#fef3c7;color:#92400e}
+.tag{display:inline-block;font-size:11.5px;padding:1px 7px;border-radius:10px;font-weight:700}.kr{background:#dcfce7;color:#166534}.sm{background:#fef3c7;color:#92400e}
 .fgrow{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:6px 0;border-bottom:1px solid #f3efea;font-size:14px}
 .fgrow .pills{display:flex;gap:4px}.fgrow .pills button{width:34px;height:34px;border-radius:9px;border:1px solid #ddd5ce;background:#faf9f7;font-size:14px;cursor:pointer}
 .fgrow .pills button.on{background:var(--acc);color:#fff;border-color:var(--acc)}
 .pb{display:grid;grid-template-columns:1fr 70px;gap:6px 10px;align-items:center;font-size:14px;margin-top:4px}
 .pb input{margin-top:0}
 .copyb{margin-top:10px;border:1px solid #cbd5e1;background:#fff;border-radius:9px;padding:7px 12px;font-size:13px;cursor:pointer}
-.cr{text-align:center;font-size:11.5px;color:#b4aaa2;margin:22px 0 0}
+.cr{text-align:center;font-size:11.5px;color:#7d7269;margin:22px 0 0}
 @media(max-width:420px){.row.three{grid-template-columns:1fr 1fr}}
 </style></head><body><main>
 <a class="home" href="index.html">← Главная</a>
@@ -59,7 +59,7 @@ input:focus,select:focus{outline:2px solid #f3c6d8;border-color:var(--acc)}
 <div class="body">
  <div class="seg" data-seg="ga"><button data-v="lmp" class="on">По ПМ</button><button data-v="crl">По КТР (УЗИ)</button><button data-v="ivf">ЭКО</button></div>
  <div data-pane="lmp"><div class="row"><label class="f">Первый день ПМ<input type="date" id="ga-lmp"></label><label class="f">Цикл, дней<input type="text" autocomplete="off" id="ga-cyc" value="28" inputmode="numeric"></label></div></div>
- <div data-pane="crl" hidden><div class="row"><label class="f">Дата УЗИ<input type="date" id="ga-usg"></label><label class="f">КТР, мм<input type="text" autocomplete="off" id="ga-crl" inputmode="decimal" step="0.1"></label></div></div>
+ <div data-pane="crl" hidden><div class="row"><label class="f">Дата УЗИ<input type="date" id="ga-usg"></label><label class="f">КТР, мм<input type="text" autocomplete="off" id="ga-crl" inputmode="decimal"></label></div></div>
  <div data-pane="ivf" hidden><div class="row"><label class="f">Дата переноса<input type="date" id="ga-tr"></label><label class="f">Возраст эмбриона<select id="ga-emb"><option value="5">5 сутки (бластоциста)</option><option value="3">3 сутки</option><option value="6">6 сутки</option><option value="4">4 сутки</option><option value="2">2 сутки</option></select></label></div></div>
  <label class="chk" style="margin-top:8px"><input type="checkbox" id="ga-multi">Многоплодная беременность</label>
  <div id="ga-chor-w" hidden><div class="row one"><label class="f">Тип многоплодия (хориальность)<select id="ga-chor"><option value="dcda">Дихориальная диамниотическая двойня (ДХДА)</option><option value="mcda">Монохориальная диамниотическая двойня (МХДА)</option><option value="mcma">Монохориальная моноамниотическая двойня (МХМА)</option><option value="tri">Трихориальная триамниотическая тройня</option><option value="unk">Не установлена</option></select></label></div><div class="note" style="margin-top:6px">По КТР — вводите <b>наибольший</b> КТР из плодов.</div></div>
@@ -68,9 +68,9 @@ input:focus,select:focus{outline:2px solid #f3c6d8;border-color:var(--acc)}
  <div class="note">ПДР = ПМ + 280 дней (при цикле ≠ 28 дней — поправка на разницу). КТР — формула Robinson (до 13⁶ нед); при расхождении срока по ПМ и УЗИ I триместра более чем на 5–7 дней срок обычно устанавливают по УЗИ. ЭКО: ПДР = перенос + 266 − возраст эмбриона. Дата 30⁰ нед = ПДР − 70 дней — начало отпуска по беременности и родам (при многоплодной — с 28 нед, ПДР − 84 дня; по законодательству об отпуске по беременности и родам). Многоплодная: ПДР указывается формально (40 нед); при расхождении срока по ПМ и УЗИ срок устанавливают по наибольшему КТР; плановое родоразрешение — ДХДА 37–38 нед, МХДА 36–37 нед, МХМА 32–34 нед (КС), тройня 35–36 нед; неясная хориальность — ведение как при монохориальной; УЗИ: монохориальная — каждые 2 нед с 16 нед + допплер, ди/трихориальная — каждые 4 нед с 16 нед; КТГ с 28 нед (МХМА — каждые 3 дня). Многоплодие — фактор умеренного риска ПЭ. <span class="tag kr">КР «Многоплодная беременность» 2024</span>. Перечень обследований — из <span class="tag kr">КР «Нормальная беременность»</span>.</div>
 </div></details>
 
-<details class="calc" id="c-wg"><summary><div class="ic">⚖️</div><div><div class="st">Прибавка массы тела</div><div class="sd">Норма прибавки по ИМТ до беременности и сроку</div></div><div class="chev">›</div></summary>
+<details class="calc" id="c-wg"><summary><div class="ic">📈</div><div><div class="st">Прибавка массы тела</div><div class="sd">Норма прибавки по ИМТ до беременности и сроку</div></div><div class="chev">›</div></summary>
 <div class="body">
- <div class="row three"><label class="f">Рост, см<input type="text" autocomplete="off" id="wg-h" inputmode="decimal"></label><label class="f">Масса до беременности, кг<input type="text" autocomplete="off" id="wg-pre" inputmode="decimal" step="0.1"></label><label class="f">Масса сейчас, кг<input type="text" autocomplete="off" id="wg-cur" inputmode="decimal" step="0.1"></label></div>
+ <div class="row three"><label class="f">Рост, см<input type="text" autocomplete="off" id="wg-h" inputmode="decimal"></label><label class="f">Масса до беременности, кг<input type="text" autocomplete="off" id="wg-pre" inputmode="decimal"></label><label class="f">Масса сейчас, кг<input type="text" autocomplete="off" id="wg-cur" inputmode="decimal"></label></div>
  <div class="row"><label class="f">Срок, полных недель<input type="text" autocomplete="off" id="wg-ga" inputmode="numeric"></label><div></div></div>
  <div class="res" id="r-wg">Введите данные</div>
  <div class="note">Нормы — таблица <span class="tag kr">КР «Нормальная беременность»</span>: в I триместре не более 0,5–2 кг, далее еженедельно по исходному ИМТ. Коридор на текущий срок рассчитан линейно. Для одноплодной беременности.</div>
@@ -78,20 +78,20 @@ input:focus,select:focus{outline:2px solid #f3c6d8;border-color:var(--acc)}
 
 <details class="calc" id="c-fu"><summary><div class="ic">📏</div><div><div class="st">Высота дна матки</div><div class="sd">Соответствие ВДМ сроку, 20–42 нед</div></div><div class="chev">›</div></summary>
 <div class="body">
- <div class="row"><label class="f">Срок, недель<input type="text" autocomplete="off" id="fu-ga" inputmode="decimal" step="0.1"></label><label class="f">ВДМ, см<input type="text" autocomplete="off" id="fu-cm" inputmode="decimal" step="0.5"></label></div>
+ <div class="row"><label class="f">Срок, недель<input type="text" autocomplete="off" id="fu-ga" inputmode="decimal"></label><label class="f">ВДМ, см<input type="text" autocomplete="off" id="fu-cm" inputmode="decimal"></label></div>
  <div class="res" id="r-fu">Введите данные</div>
  <div class="note">Таблица 2 <span class="tag kr">КР «Нормальная беременность»</span>. При ВДМ ниже 10-го или выше 90-го перцентиля по гравидограмме — УЗИ плода (оценка роста и околоплодных вод).</div>
 </div></details>
 
-<details class="calc" id="c-gl"><summary><div class="ic">🩸</div><div><div class="st">Глюкоза / ПГТТ — ГСД</div><div class="sd">Глюкоза натощак, ПГТТ 75 г, HbA1c</div></div><div class="chev">›</div></summary>
+<details class="calc" id="c-gl"><summary><div class="ic">🍬</div><div><div class="st">Глюкоза / ПГТТ — ГСД</div><div class="sd">Глюкоза натощак, ПГТТ 75 г, HbA1c</div></div><div class="chev">›</div></summary>
 <div class="body">
- <div class="row"><label class="f">Натощак, ммоль/л<input type="text" autocomplete="off" id="gl-0" inputmode="decimal" step="0.01"></label><label class="f">HbA1c, % (если есть)<input type="text" autocomplete="off" id="gl-a" inputmode="decimal" step="0.1"></label></div>
- <div class="row"><label class="f">ПГТТ: через 1 ч<input type="text" autocomplete="off" id="gl-1" inputmode="decimal" step="0.01"></label><label class="f">ПГТТ: через 2 ч<input type="text" autocomplete="off" id="gl-2" inputmode="decimal" step="0.01"></label></div>
+ <div class="row"><label class="f">Натощак, ммоль/л<input type="text" autocomplete="off" id="gl-0" inputmode="decimal"></label><label class="f">HbA1c, % (если есть)<input type="text" autocomplete="off" id="gl-a" inputmode="decimal"></label></div>
+ <div class="row"><label class="f">ПГТТ: через 1 ч<input type="text" autocomplete="off" id="gl-1" inputmode="decimal"></label><label class="f">ПГТТ: через 2 ч<input type="text" autocomplete="off" id="gl-2" inputmode="decimal"></label></div>
  <div class="res" id="r-gl">Введите хотя бы одно значение</div>
- <div class="note">Глюкоза венозной плазмы. ГСД: натощак ≥ 5,1 (но &lt; 7,0) — <span class="tag kr">КР НБ</span>; ПГТТ: через 1 ч ≥ 10,0, через 2 ч ≥ 8,5. Манифестный СД: натощак ≥ 7,0, HbA1c ≥ 6,5 % (подтвердить повторно) — <span class="tag kr">КР НБ</span>; через 2 ч ≥ 11,1 — <span class="tag sm">по консенсусу</span>. Достаточно одного изменённого значения.</div>
+ <div class="note">Глюкоза венозной плазмы. ГСД: натощак ≥ 5,1 (но &lt; 7,0) — <span class="tag kr">КР «Нормальная беременность»</span>; ПГТТ: через 1 ч ≥ 10,0, через 2 ч ≥ 8,5. Манифестный СД: натощак ≥ 7,0, HbA1c ≥ 6,5 % (подтвердить повторно) — <span class="tag kr">КР «Нормальная беременность»</span>; через 2 ч ≥ 11,1 — <span class="tag sm">по консенсусу</span>. Достаточно одного изменённого значения.</div>
 </div></details>
 
-<details class="calc" id="c-pe"><summary><div class="ic">🫀</div><div><div class="st">Риск преэклампсии (анамнез)</div><div class="sd">Показания к АСК 150 мг с 12 до 36 нед</div></div><div class="chev">›</div></summary>
+<details class="calc" id="c-pe"><summary><div class="ic">🫀</div><div><div class="st">Риск преэклампсии (анамнез)</div><div class="sd">Показания к ацетилсалициловой кислоте 150 мг с 12 до 36 нед</div></div><div class="chev">›</div></summary>
 <div class="body">
  <div class="sub">Факторы высокого риска</div>
  <label class="chk"><input type="checkbox" data-pe="h">ПЭ или гипертензия в предыдущей беременности</label>
@@ -112,7 +112,7 @@ input:focus,select:focus{outline:2px solid #f3c6d8;border-color:var(--acc)}
  <div class="note">Высокий риск: ≥ 1 фактора высокого риска, или ≥ 2 умеренного, или высокий риск по скринингу. <span class="tag sm">КР «Преэклампсия»</span></div>
 </div></details>
 
-<details class="calc" id="c-vte"><summary><div class="ic">🩹</div><div><div class="st">Риск ВТЭО у беременных и родильниц</div><div class="sd">Балльная шкала RCOG · доза эноксапарина по массе</div></div><div class="chev">›</div></summary>
+<details class="calc" id="c-vte"><summary><div class="ic">🦵</div><div><div class="st">Риск ВТЭО у беременных и родильниц</div><div class="sd">Балльная шкала RCOG · доза эноксапарина по массе</div></div><div class="chev">›</div></summary>
 <div class="body">
  <div class="seg" data-seg="vte"><button data-v="ante" class="on">Во время беременности</button><button data-v="post">После родов</button></div>
  <div class="row"><label class="f">Масса тела (на 1-м визите), кг<input type="text" autocomplete="off" id="vte-w" inputmode="decimal"></label><div></div></div>
@@ -150,10 +150,11 @@ input:focus,select:focus{outline:2px solid #f3c6d8;border-color:var(--acc)}
  <label class="chk"><input type="checkbox" data-v="surgery">Операция во время беременности/после родов (кроме ушивания промежности)<span class="pt">3</span></label>
  <label class="chk" data-only="ante"><input type="checkbox" data-v="hyperemesis">Неукротимая рвота беременных<span class="pt">3</span></label>
  <label class="chk" data-only="ante"><input type="checkbox" data-v="ohss">СГЯ (только I триместр)<span class="pt">4</span></label>
+ <label class="chk" data-only="post"><input type="checkbox" data-v="readmit">Повторная или длительная (≥ 3 дней) госпитализация после родов<span class="pt">≥ 10 дн</span></label>
  <label class="chk"><input type="checkbox" data-v="infection">Текущая системная инфекция<span class="pt">1</span></label>
  <label class="chk"><input type="checkbox" data-v="immob">Иммобилизация, дегидратация<span class="pt">1</span></label>
  <div class="res" id="r-vte"></div>
- <div class="note">Шкала RCOG Green-top №37a (2015), на ней основаны российские рекомендации по ВТЭО у беременных. <span class="tag sm">Смежные КР</span>. Дозы эноксапарина — профилактические, по массе тела на первом визите. Тромбофилию и ВТЭО в анамнезе ведут совместно с гематологом.</div>
+ <div class="note">Шкала RCOG Green-top №37a (2015), на ней основаны российские рекомендации по ВТЭО у беременных. <span class="tag sm">смежные КР</span>. Дозы эноксапарина — профилактические, по массе тела на первом визите. Тромбофилию и ВТЭО в анамнезе ведут совместно с гематологом.</div>
 </div></details>
 
 <h2 class="grp" id="g2">Гинекология</h2>
@@ -167,16 +168,16 @@ input:focus,select:focus{outline:2px solid #f3c6d8;border-color:var(--acc)}
 <details class="calc" id="c-pb"><summary><div class="ic">🩸</div><div><div class="st">PBAC — оценка кровопотери</div><div class="sd">Шкала Higham за одну менструацию</div></div><div class="chev">›</div></summary>
 <div class="body">
  <div class="sub">Прокладки — количество за менструацию</div>
- <div class="pb"><span>Слегка пропитана (1 балл)</span><input type="text" autocomplete="off" min="0" inputmode="numeric" data-pb="padL"><span>Пропитана наполовину (5)</span><input type="text" autocomplete="off" min="0" inputmode="numeric" data-pb="padM"><span>Полностью пропитана (20)</span><input type="text" autocomplete="off" min="0" inputmode="numeric" data-pb="padS"></div>
+ <div class="pb"><span>Слегка пропитана (1 балл)</span><input type="text" autocomplete="off" inputmode="numeric" data-pb="padL"><span>Пропитана наполовину (5)</span><input type="text" autocomplete="off" inputmode="numeric" data-pb="padM"><span>Полностью пропитана (20)</span><input type="text" autocomplete="off" inputmode="numeric" data-pb="padS"></div>
  <div class="sub">Тампоны</div>
- <div class="pb"><span>Слегка пропитан (1)</span><input type="text" autocomplete="off" min="0" inputmode="numeric" data-pb="tamL"><span>Наполовину (5)</span><input type="text" autocomplete="off" min="0" inputmode="numeric" data-pb="tamM"><span>Полностью (10)</span><input type="text" autocomplete="off" min="0" inputmode="numeric" data-pb="tamS"></div>
+ <div class="pb"><span>Слегка пропитан (1)</span><input type="text" autocomplete="off" inputmode="numeric" data-pb="tamL"><span>Наполовину (5)</span><input type="text" autocomplete="off" inputmode="numeric" data-pb="tamM"><span>Полностью (10)</span><input type="text" autocomplete="off" inputmode="numeric" data-pb="tamS"></div>
  <div class="sub">Сгустки и подтекание</div>
- <div class="pb"><span>Мелкие сгустки (1)</span><input type="text" autocomplete="off" min="0" inputmode="numeric" data-pb="clotS"><span>Крупные сгустки, размером с монету 5 ₽ и больше (5)</span><input type="text" autocomplete="off" min="0" inputmode="numeric" data-pb="clotL"><span>Эпизоды подтекания (5)</span><input type="text" autocomplete="off" min="0" inputmode="numeric" data-pb="flood"></div>
+ <div class="pb"><span>Мелкие сгустки (1)</span><input type="text" autocomplete="off" inputmode="numeric" data-pb="clotS"><span>Крупные сгустки, размером с монету 5 ₽ и больше (5)</span><input type="text" autocomplete="off" inputmode="numeric" data-pb="clotL"><span>Эпизоды подтекания (5)</span><input type="text" autocomplete="off" inputmode="numeric" data-pb="flood"></div>
  <div class="res" id="r-pb"></div>
  <div class="note">PBAC ≥ 100 баллов соответствует кровопотере &gt; 80 мл за цикл (обильное менструальное кровотечение). Используется при АМК и миоме матки для оценки до и после лечения.</div>
 </div></details>
 
-<details class="calc" id="c-ov"><summary><div class="ic">🔬</div><div><div class="st">RMI и ROMA — образование яичника</div><div class="sd">Риск злокачественности</div></div><div class="chev">›</div></summary>
+<details class="calc" id="c-ov"><summary><div class="ic">🎗️</div><div><div class="st">RMI и ROMA — образование яичника</div><div class="sd">Риск злокачественности</div></div><div class="chev">›</div></summary>
 <div class="body">
  <div class="seg" data-seg="meno"><button data-v="pre" class="on">Пременопауза</button><button data-v="post">Постменопауза</button></div>
  <div class="sub">RMI — признаки по УЗИ</div>
@@ -185,7 +186,7 @@ input:focus,select:focus{outline:2px solid #f3c6d8;border-color:var(--acc)}
  <label class="chk"><input type="checkbox" data-rmi>Двустороннее поражение</label>
  <label class="chk"><input type="checkbox" data-rmi>Асцит</label>
  <label class="chk"><input type="checkbox" data-rmi>Признаки метастазов</label>
- <div class="row"><label class="f">СА-125, Ед/мл<input type="text" autocomplete="off" id="ov-ca" inputmode="decimal" step="0.1"></label><label class="f">HE4, пмоль/л (для ROMA)<input type="text" autocomplete="off" id="ov-he" inputmode="decimal" step="0.1"></label></div>
+ <div class="row"><label class="f">СА-125, Ед/мл<input type="text" autocomplete="off" id="ov-ca" inputmode="decimal"></label><label class="f">HE4, пмоль/л (для ROMA)<input type="text" autocomplete="off" id="ov-he" inputmode="decimal"></label></div>
  <div class="row"><label class="f">Анализатор (пороги ROMA)<select id="ov-as"><option value="architect">Abbott Architect</option><option value="elecsys">Roche Elecsys</option></select></label><div></div></div>
  <div class="res" id="r-ov"></div>
  <div class="note">RMI I (Jacobs) = U × M × СА-125: U = 0 (нет признаков), 1 (один), 3 (≥ 2); M = 1 (пременопауза), 3 (постменопауза). Риск: &lt; 25 — низкий, 25–250 — умеренный, &gt; 250 — высокий; ≥ 200 — порог направления к онкологу. ROMA (Moore 2009) — пороги зависят от анализатора. Упомянуты в <span class="tag kr">КР «Доброкачественные новообразования яичников»</span>; критерии IOTA точнее RMI.</div>
@@ -193,35 +194,36 @@ input:focus,select:focus{outline:2px solid #f3c6d8;border-color:var(--acc)}
 
 <details class="calc" id="c-bmi"><summary><div class="ic">📐</div><div><div class="st">ИМТ и окружность талии</div><div class="sd">Классификация ВОЗ · абдоминальное ожирение</div></div><div class="chev">›</div></summary>
 <div class="body">
- <div class="row three"><label class="f">Рост, см<input type="text" autocomplete="off" id="bmi-h" inputmode="decimal"></label><label class="f">Масса, кг<input type="text" autocomplete="off" id="bmi-w" inputmode="decimal" step="0.1"></label><label class="f">ОТ, см<input type="text" autocomplete="off" id="bmi-wa" inputmode="decimal"></label></div>
+ <div class="row three"><label class="f">Рост, см<input type="text" autocomplete="off" id="bmi-h" inputmode="decimal"></label><label class="f">Масса, кг<input type="text" autocomplete="off" id="bmi-w" inputmode="decimal"></label><label class="f">ОТ, см<input type="text" autocomplete="off" id="bmi-wa" inputmode="decimal"></label></div>
  <div class="res" id="r-bmi">Введите данные</div>
  <div class="note">ИМТ = масса / рост² (м). ОТ ≥ 80 см у женщин — абдоминальное ожирение.</div>
 </div></details>
 
 <details class="calc" id="c-oh"><summary><div class="ic">🧪</div><div><div class="st">17-ОН-прогестерон — нВДКН</div><div class="sd">Интерпретация базального уровня</div></div><div class="chev">›</div></summary>
 <div class="body">
- <div class="row"><label class="f">17-ОНП<input type="text" autocomplete="off" id="oh-v" inputmode="decimal" step="0.01"></label><label class="f">Единицы<select id="oh-u"><option value="nmol">нмоль/л</option><option value="ng">нг/мл</option></select></label></div>
+ <div class="row"><label class="f">17-ОНП<input type="text" autocomplete="off" id="oh-v" inputmode="decimal"></label><label class="f">Единицы<select id="oh-u"><option value="nmol">нмоль/л</option><option value="ng">нг/мл</option></select></label></div>
  <div class="res" id="r-oh">Введите значение</div>
- <div class="note">Утром, в раннюю фолликулярную фазу (при аменорее — в любой день, вне беременности). &lt; 6 нмоль/л (&lt; 2 нг/мл) — дефицит 21-гидроксилазы исключён; 6–30 нмоль/л — «серая зона»: генетика CYP21A2 / стимуляционная проба; &gt; 30 нмоль/л (&gt; 10 нг/мл) — дефицит 21-гидроксилазы. 1 нг/мл = 3,026 нмоль/л. <span class="tag kr">КР «ВДКН»</span></div>
+ <div class="note">Утром, в раннюю фолликулярную фазу (при аменорее — в любой день, вне беременности). &lt; 6 нмоль/л (&lt; 2 нг/мл) — нВДКН маловероятен; 6–30 нмоль/л (2–10 нг/мл) — «серая зона»: генетика CYP21A2 / стимуляционная проба; &gt; 30 нмоль/л (&gt; 10 нг/мл) — дефицит 21-гидроксилазы. 1 нг/мл = 3,026 нмоль/л. <span class="tag kr">КР «ВДКН»</span></div>
 </div></details>
 
 <h2 class="grp" id="g3">Дозировки</h2>
 
 <details class="calc" id="c-ds"><summary><div class="ic">💉</div><div><div class="st">Дозы по массе тела</div><div class="sd">Транексамовая кислота, гентамицин, метотрексат, эноксапарин</div></div><div class="chev">›</div></summary>
 <div class="body">
- <div class="row"><label class="f">Масса, кг<input type="text" autocomplete="off" id="ds-w" inputmode="decimal" step="0.1"></label><label class="f">Рост, см (для метотрексата)<input type="text" autocomplete="off" id="ds-h" inputmode="decimal"></label></div>
+ <div class="row"><label class="f">Масса, кг<input type="text" autocomplete="off" id="ds-w" inputmode="decimal"></label><label class="f">Рост, см (для метотрексата)<input type="text" autocomplete="off" id="ds-h" inputmode="decimal"></label></div>
  <div class="res" id="r-ds">Введите массу тела</div>
  <div class="note">Транексамовая кислота: взрослым — 3 г/сут (в тяжёлых случаях до 4 г/сут) 4 дня; подросткам — 25 мг/кг (не более 1 г на приём) 2–3 раза в сутки 4 дня, при остром АМК — в/в — <span class="tag kr">КР «АМК»</span>. Гентамицин — схемы стационарного лечения ВЗОМТ, <span class="tag kr">КР «ВЗОМТ»</span>; при ожирении и сниженной функции почек дозу корректируют. #Метотрексат 50 мг/м² в/м — внематочная беременность (решение консилиума). Площадь поверхности тела — по Мостеллеру.</div>
 </div></details>
 
 <details class="calc" id="c-gc"><summary><div class="ic">🔁</div><div><div class="st">Пересчёт глюкокортикоидов</div><div class="sd">Гидрокортизон ↔ преднизолон ↔ метилпреднизолон ↔ дексаметазон</div></div><div class="chev">›</div></summary>
 <div class="body">
- <div class="row"><label class="f">Препарат<select id="gc-d"><option value="hydro">Гидрокортизон</option><option value="pred">Преднизолон</option><option value="mpred">Метилпреднизолон</option><option value="dexa">Дексаметазон</option></select></label><label class="f">Доза, мг/сут<input type="text" autocomplete="off" id="gc-v" inputmode="decimal" step="0.01"></label></div>
+ <div class="row"><label class="f">Препарат<select id="gc-d"><option value="hydro">Гидрокортизон</option><option value="pred">Преднизолон</option><option value="mpred">Метилпреднизолон</option><option value="dexa">Дексаметазон</option></select></label><label class="f">Доза, мг/сут<input type="text" autocomplete="off" id="gc-v" inputmode="decimal"></label></div>
  <div class="res" id="r-gc">Введите дозу</div>
  <div class="note">По <span class="tag kr">КР «ВДКН»</span>: 20 мг гидрокортизона ≈ 5 мг преднизолона ≈ 4 мг метилпреднизолона ≈ 0,375–0,5 мг дексаметазона (по ростовому/подавляющему эффекту). По противовоспалительному действию в стандартных таблицах дексаметазон ≈ 0,75 мг.</div>
 </div></details>
 
-<p class="note" style="text-align:center;margin-top:18px">Калькуляторы помогают в расчётах, но не заменяют клиническое решение.</p>
+<p class="note" style="text-align:center;margin-top:18px"><b>#</b> — вне инструкции (off-label) · <b>**</b> — ЖНВЛП · <span class="tag kr">КР</span> — из клинических рекомендаций · <span class="tag sm">смежные КР</span> — смежные КР / консенсус</p>
+<p class="note" style="text-align:center;margin-top:6px">Калькуляторы помогают в расчётах, но не заменяют клиническое решение.</p>
 <p class="cr"><a href="https://t.me/drTemirbieva" target="_blank" rel="noopener" onclick="var w=window.Telegram&amp;&amp;Telegram.WebApp;if(w&amp;&amp;w.initData){w.openTelegramLink(this.href);return false}" style="color:inherit;text-decoration:underline dotted">Created by Temirbieva Polina</a></p>
 </main>
 <script>// ===== Логика калькуляторов (чистые функции, без DOM) =====
@@ -244,7 +246,13 @@ var CALC = (function () {
   function fmtDate(t) { var d = new Date(t); return String(d.getUTCDate()).padStart(2, '0') + '.' + String(d.getUTCMonth() + 1).padStart(2, '0') + '.' + d.getUTCFullYear(); }
   function fmtGA(days) { var w = Math.floor(days / 7), d = days - w * 7; return w + ' нед ' + d + ' дн'; }
   function trimester(days) { if (days < 14 * 7) return 'I'; if (days < 28 * 7) return 'II'; return 'III'; }
-  function num(x) { if (x === '' || x === null || x === undefined) return NaN; return typeof x === 'number' ? x : parseFloat(String(x).replace(',', '.')); }
+  function num(x) {
+    if (x === '' || x === null || x === undefined) return NaN;
+    if (typeof x === 'number') return x;
+    var s = String(x).trim();
+    if (!/^-?\d+([.,]\d+)?$/.test(s)) return NaN; // «5.1.1», «30x», «5,1 ммоль» — ошибка ввода, а не число
+    return parseFloat(s.replace(',', '.'));
+  }
 
   // ---------- 1. Срок беременности и ПДР ----------
   // Возвращает "условную дату ПМ" (день 0 беременности) для любого метода
@@ -257,7 +265,7 @@ var CALC = (function () {
   function gaDaysFromCRL(crl) { return Math.round(8.052 * Math.sqrt(crl) + 23.73); } // Robinson & Fleming, КТР в мм
   function lmpFromCRL(usgStr, crl) {
     var t = parseDate(usgStr); if (t === null) return { error: 'Укажите дату УЗИ' };
-    crl = num(crl); if (!(crl >= 3 && crl <= 84)) return { error: 'КТР: от 3 до 84 мм (метод применим до 13 нед 6 дн)' };
+    crl = num(crl); if (!(crl >= 3 && crl <= 83)) return { error: 'КТР: от 3 до 83 мм (метод применим до 13 нед 6 дн)' };
     var ga = gaDaysFromCRL(crl);
     return { lmp: addDays(t, -ga), gaAtUsg: ga, warn: crl < 10 ? 'При КТР < 10 мм точность ниже' : '' };
   }
@@ -306,7 +314,7 @@ var CALC = (function () {
       ev.push([M.d[0], M.d[1], 'Плановое родоразрешение: ' + M.text]);
     }
     if (ga < 0) { r.error = 'Дата в будущем: срок отрицательный — проверьте даты'; return r; }
-    if (ga > 44 * 7) { r.error = 'Срок больше 44 недель — проверьте даты'; return r; }
+    if (ga > 44 * 7) { r.error = 'Срок больше 44 нед — проверьте даты'; return r; }
     r.gaText = fmtGA(ga); r.tri = trimester(ga); r.daysToEdd = diffDays(todayT, r.edd);
     r.now = []; r.next = [];
     EVENTS.filter(function (e) { return !(M && e[3] === 's'); }).concat(ev).forEach(function (e) {
@@ -316,6 +324,7 @@ var CALC = (function () {
       else if (e[0] > ga) r.next.push({ from: addDays(lmp, e[0]), to: addDays(lmp, nextTo), text: e[2], start: e[0] });
     });
     r.next.sort(function (a, b) { return a.start - b.start; });
+    if (M && ga > M.d[1]) r.overdue = 'Срок планового родоразрешения (' + M.text + ') прошёл — решение вопроса о родоразрешении';
     return r;
   }
 
@@ -336,8 +345,10 @@ var CALC = (function () {
     var bmi = Math.round(bmiVal(h, preW) * 10) / 10;
     var g = WG.filter(function (x) { return bmi < x.max; })[0];
     var lo, hi;
-    if (gaWeeks <= 13) { lo = 0; hi = 2 * gaWeeks / 13; } // I триместр: не более 0,5–2 кг
-    else { lo = 0.5 + (gaWeeks - 13) * g.wk[0]; hi = 2 + (gaWeeks - 13) * g.wk[1]; }
+    // I триместр: не более 0,5–2 кг за триместр (без привязки к неделе);
+    // II–III: линейно от (13 нед: 0,5–2 кг) до нормы КР «за всю беременность» к 40 нед
+    if (gaWeeks <= 13) { lo = 0; hi = 2; }
+    else { var k = Math.min(gaWeeks - 13, 27) / 27; lo = 0.5 + k * (g.total[0] - 0.5); hi = 2 + k * (g.total[1] - 2); }
     lo = Math.round(lo * 10) / 10; hi = Math.round(hi * 10) / 10;
     var gain = Math.round((curW - preW) * 10) / 10;
     var st = gain < lo ? 'low' : gain > hi ? 'high' : 'ok';
@@ -348,8 +359,8 @@ var CALC = (function () {
   var FUNDAL = [[20, 21, 18, 24], [22, 23, 21, 25], [24, 25, 23, 27], [26, 27, 25, 28], [28, 29, 26, 31], [30, 31, 29, 32], [32, 33, 31, 33], [34, 35, 32, 33], [36, 37, 32, 37], [38, 39, 35, 38], [40, 42, 34, 35]];
   function fundal(gaWeeks, cm) {
     gaWeeks = num(gaWeeks); cm = num(cm);
-    if (!(gaWeeks >= 20 && gaWeeks < 43)) return { error: 'Таблица КР — от 20 до 42 недель' };
-    if (!(cm > 5 && cm < 60)) return { error: 'ВДМ: 5–60 см' };
+    if (!(gaWeeks >= 20 && gaWeeks < 43)) return { error: 'Таблица КР — от 20 до 42 нед' };
+    if (!(cm >= 5 && cm <= 60)) return { error: 'ВДМ: 5–60 см' };
     var w = Math.floor(gaWeeks);
     var row = FUNDAL.filter(function (r) { return w >= r[0] && w <= r[1]; })[0];
     var st = cm < row[2] ? 'low' : cm > row[3] ? 'high' : 'ok';
@@ -385,7 +396,7 @@ var CALC = (function () {
     prevVTE: [4, 'ap'], prevVTEsurg: [3, 'ap'], hiThromb: [3, 'ap'], comorb: [3, 'ap'], famHx: [1, 'ap'], loThromb: [1, 'ap'],
     age35: [1, 'ap'], bmi30: [1, 'ap'], bmi40: [2, 'ap'], parity3: [1, 'ap'], smoker: [1, 'ap'], varic: [1, 'ap'],
     pe: [1, 'ap'], art: [1, 'a'], multiple: [1, 'ap'], csLabour: [2, 'p'], csElective: [1, 'p'], operative: [1, 'p'], prolonged: [1, 'p'],
-    pph: [1, 'p'], preterm: [1, 'p'], stillbirth: [1, 'p'], surgery: [3, 'ap'], hyperemesis: [3, 'a'], ohss: [4, 'a'], infection: [1, 'ap'], immob: [1, 'ap']
+    pph: [1, 'p'], preterm: [1, 'p'], stillbirth: [1, 'p'], readmit: [0, 'p'], surgery: [3, 'ap'], hyperemesis: [3, 'a'], ohss: [4, 'a'], infection: [1, 'ap'], immob: [1, 'ap']
   };
   function enoxaparinDose(w) {
     w = num(w); if (!(w >= 30 && w <= 300)) return null;
@@ -399,12 +410,12 @@ var CALC = (function () {
     if (mode === 'ante') {
       if (keys.indexOf('prevVTE') >= 0) { level = 'high'; rec = 'Высокий риск (ВТЭО в анамнезе): НМГ на протяжении всей беременности и 6 недель после родов; консультация гематолога/экспертного центра'; }
       else if (score >= 4) { level = 'high'; rec = 'НМГ с I триместра (на протяжении беременности) + после родов не менее 6 недель'; }
-      else if (score === 3) { level = 'mid'; rec = 'НМГ с 28 недель беременности + после родов не менее 6 недель'; }
+      else if (score === 3) { level = 'mid'; rec = 'НМГ с 28 нед беременности + после родов не менее 6 нед'; }
       else { level = 'low'; rec = 'Медикаментозная профилактика не показана; ранняя активизация, достаточная гидратация. Повторная оценка при госпитализации и после родов'; }
     } else {
       // RCOG 37a: высокий риск после родов — ВТЭО в анамнезе, НМГ во время беременности, тромбофилия высокого риска, тромбофилия низкого риска + семейный анамнез ВТЭО
       if (keys.indexOf('prevVTE') >= 0 || antenatalLMWH || keys.indexOf('hiThromb') >= 0 || (keys.indexOf('loThromb') >= 0 && keys.indexOf('famHx') >= 0)) { level = 'high'; rec = 'НМГ не менее 6 недель после родов'; }
-      else if (score >= 2) { level = 'mid'; rec = 'НМГ не менее 10 дней после родов (при сохранении факторов риска или ≥3 факторах — рассмотреть продление до 6 недель)'; }
+      else if (score >= 2 || keys.indexOf('readmit') >= 0) { level = 'mid'; rec = 'НМГ не менее 10 дней после родов (при сохранении факторов риска или ≥3 факторах — рассмотреть продление до 6 недель)'; }
       else { level = 'low'; rec = 'Ранняя активизация, гидратация; НМГ не требуется'; }
     }
     return { score: score, level: level, rec: rec, dose: enoxaparinDose(weight), used: used };
@@ -434,7 +445,7 @@ var CALC = (function () {
     var U = nFeatures === 0 ? 0 : nFeatures === 1 ? 1 : 3;
     var M = postmeno ? 3 : 1;
     var v = U * M * ca125;
-    var level = v >= 250 ? 'high' : v >= 25 ? 'mid' : 'low';
+    var level = v > 250 ? 'high' : v >= 25 ? 'mid' : 'low';
     return { U: U, M: M, rmi: Math.round(v * 10) / 10, level: level, over200: v >= 200 };
   }
   var ROMA_CUT = { architect: { pre: 7.4, post: 25.3 }, elecsys: { pre: 11.4, post: 29.9 } };
@@ -464,7 +475,7 @@ var CALC = (function () {
   function ohp(v, unit) {
     v = num(v); if (!(v >= 0 && v < 10000)) return { error: 'Укажите значение 17-ОНП' };
     var nmol = unit === 'ng' ? v * 3.026 : v;
-    var level = nmol < 6 ? 'ok' : nmol <= 30 ? 'mid' : 'high';
+    var level = unit === 'ng' ? (v < 2 ? 'ok' : v <= 10 ? 'mid' : 'high') : (nmol < 6 ? 'ok' : nmol <= 30 ? 'mid' : 'high');
     return { nmol: Math.round(nmol * 10) / 10, level: level };
   }
 
@@ -480,11 +491,11 @@ var CALC = (function () {
     r.txaIv = Math.round(txa) + ' мг в/в на введение (25 мг/кг, не более 1 г), 2–3 раза в сутки';
     r.gentLoad = Math.round(2 * w) + ' мг в/в (2 мг/кг) — нагрузочная';
     r.gentMaint = Math.round(1.5 * w) + ' мг в/в каждые 8 ч (1,5 мг/кг)';
-    r.gentOnce = Math.round(3 * w) + '–' + Math.round(5 * w) + ' мг в/в 1 раз в сутки (3–5 мг/кг)';
+    r.gentOnce = Math.round(3 * w) + '–' + Math.round(5 * w) + ' мг в/в 1 р/сут (3–5 мг/кг)';
     r.enox = enoxaparinDose(w);
     if (!isNaN(h)) {
       if (!(h >= 120 && h <= 220)) return { error: 'Рост: 120–220 см' };
-      var s = bsa(h, w); r.bsa = Math.round(s * 100) / 100; r.mtx = Math.round(50 * s) + ' мг в/м однократно (50 мг/м²)';
+      var s = bsa(h, w); r.bsa = Math.round(s * 100) / 100; r.mtx = Math.round(50 * s) + ' мг в/м или в/в (50 мг/м²); при снижении β-ХГЧ < 15% с 4-го по 7-й день — повторная доза';
     }
     return r;
   }
@@ -537,6 +548,7 @@ function calcGA(){
  if(m==='crl')h+='<b>Срок на дату УЗИ</b><span>'+C.fmtGA(base.gaAtUsg)+'</span>';
  h+='<b>Условная дата ПМ</b><span>'+C.fmtDate(base.lmp)+'</span></div>';
  if(base.warn)h+='<div class="note">⚠️ '+esc(base.warn)+'</div>';
+ if(r.overdue)h+='<div class="note">⚠️ '+esc(r.overdue)+'</div>';
  if(r.ga>=287)h+='<div class="note">⚠️ Срок 41 нед и более — решение вопроса о госпитализации и родоразрешении.</div>';
  h+='<div class="sub">Сейчас</div>'+(r.now.length?'<ul>'+r.now.map(function(x){return '<li>'+esc(x)+'</li>'}).join('')+'</ul>':'<div class="note">Плановых обследований по сроку нет — визит по графику</div>');
  if(r.next.length)h+='<div class="sub">Далее</div><ul>'+r.next.slice(0,4).map(function(x){return '<li><b>'+C.fmtDate(x.from)+(x.to!==x.from?'–'+C.fmtDate(x.to):'')+'</b> · '+esc(x.text)+'</li>'}).join('')+'</ul>';
@@ -563,7 +575,7 @@ function calcGL(){
 function calcPE(){
  var h=[].slice.call(document.querySelectorAll('[data-pe=h]:checked')),m=[].slice.call(document.querySelectorAll('[data-pe=m]:checked'));
  var r=C.preeclampsia(h,m,$('pe-scr').checked);
- if(r.high)show('r-pe','high','<div class="big">Высокий риск ПЭ</div>#АСК 150 мг 1 раз в сутки вечером с 12 до 36 недель; контроль АД на каждом визите; при низком потреблении кальция — кальций 1 г/сут.<div class="note">Высокого риска: '+r.h+' · умеренного: '+r.m+'</div>');
+ if(r.high)show('r-pe','high','<div class="big">Высокий риск ПЭ</div>#ацетилсалициловая кислота** 150 мг 1 р/сут с 12 до 36 нед; контроль АД на каждом визите; при низком потреблении кальция — кальций 1 г/сут.<div class="note">Высокого риска: '+r.h+' · умеренного: '+r.m+'</div>');
  else show('r-pe','ok','<div class="big">Высокий риск не выявлен</div>Высокого риска: '+r.h+' · умеренного: '+r.m+(r.m===1?' (нужно ≥ 2)':'')+'. Оценить риск по скринингу I триместра.');
 }
 function calcVTE(){
@@ -572,20 +584,21 @@ function calcVTE(){
  ['vprev','vbmi'].concat(mode==='post'?['vcs']:[]).forEach(function(n){var v=document.querySelector('#c-vte input[name='+n+']:checked');if(v&&v.value)keys.push(v.value)});
  var r=C.vte(mode,keys,$('vte-w').value,mode==='post'&&$('vte-ante').checked);
  var cls={low:'ok',mid:'mid',high:'high'}[r.level];
- show('r-vte',cls,'<div class="big">'+r.score+' '+(r.score%10===1&&r.score%100!==11?'балл':(r.score%10>=2&&r.score%10<=4&&(r.score%100<12||r.score%100>14))?'балла':'баллов')+'</div>'+esc(r.rec)+(r.level!=='low'?'<div class="kv" style="margin-top:8px"><b>Эноксапарин</b><span>'+(r.dose?esc(r.dose):'укажите массу тела')+'</span></div>':'')+'<div class="note">'+(mode==='ante'?'До родов: ≥ 4 — НМГ с I триместра; 3 — с 28 нед.':'После родов: ≥ 2 — НМГ ≥ 10 дней; ВТЭО в анамнезе, тромбофилия высокого риска или НМГ во время беременности — 6 нед.')+' При госпитализации, операции, неукротимой рвоте, СГЯ — рассмотреть НМГ на этот период.</div>');
+ show('r-vte',cls,'<div class="big">'+r.score+' '+(r.score%10===1&&r.score%100!==11?'балл':(r.score%10>=2&&r.score%10<=4&&(r.score%100<12||r.score%100>14))?'балла':'баллов')+'</div>'+esc(r.rec)+(r.level!=='low'?'<div class="kv" style="margin-top:8px"><b>Эноксапарин</b><span>'+(r.dose?esc(r.dose):($('vte-w').value===''?'укажите массу тела':'масса вне диапазона 30–300 кг'))+'</span></div>':'')+'<div class="note">'+(mode==='ante'?'До родов: ≥ 4 — НМГ с I триместра; 3 — с 28 нед.':'После родов: ≥ 2 — НМГ ≥ 10 дней; ВТЭО в анамнезе, тромбофилия высокого риска или НМГ во время беременности — 6 нед.')+' При госпитализации, операции, неукротимой рвоте, СГЯ — рассмотреть НМГ на этот период.</div>');
 }
+function balls(n){return n%10===1&&n%100!==11?'балл':(n%10>=2&&n%10<=4&&(n%100<12||n%100>14))?'балла':'баллов'}
 var FGZ=['Верхняя губа','Подбородок','Грудь','Верхняя часть спины','Нижняя часть спины','Верхняя часть живота','Нижняя часть живота','Плечи','Бёдра'],fgv=[0,0,0,0,0,0,0,0,0];
 $('fg-rows').innerHTML=FGZ.map(function(z,i){return '<div class="fgrow"><span>'+z+'</span><div class="pills" data-i="'+i+'">'+[0,1,2,3,4].map(function(n){return '<button type="button" data-n="'+n+'"'+(n===0?' class="on"':'')+'>'+n+'</button>'}).join('')+'</div></div>'}).join('');
 $('fg-rows').addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;var p=b.parentNode;p.querySelectorAll('button').forEach(function(x){x.classList.toggle('on',x===b)});fgv[+p.dataset.i]=+b.dataset.n;calcFG();});
 function calcFG(){var r=C.fg(fgv);
- if(r.level==='high')show('r-fg','high','<div class="big">'+r.sum+' баллов — гирсутизм</div>Сумма > 8: гирсутизм при любом этническом пороге. Обследование на гиперандрогению (СПЯ, нВДКН).');
- else if(r.level==='mid')show('r-fg','mid','<div class="big">'+r.sum+' баллов — вероятный гирсутизм</div>Выше общего порога > 4–6 (для европеоидов значимо > 8). Оценить с учётом этнической принадлежности и андрогенов крови.');
- else show('r-fg',r.sum>3?'mid':'ok','<div class="big">'+r.sum+' баллов</div>'+(r.sum>3?'Ниже общего порога, но для женщин Юго-Восточной Азии значимо > 3.':'Гирсутизма нет.'));
+ if(r.level==='high')show('r-fg','high','<div class="big">'+r.sum+' '+balls(r.sum)+' — гирсутизм</div>Сумма > 8: гирсутизм при любом этническом пороге. Обследование на гиперандрогению (СПЯ, нВДКН).');
+ else if(r.level==='mid')show('r-fg','mid','<div class="big">'+r.sum+' '+balls(r.sum)+' — вероятный гирсутизм</div>Выше общего порога > 4–6 (для европеоидов значимо > 8). Оценить с учётом этнической принадлежности и андрогенов крови.');
+ else show('r-fg',r.sum>3?'mid':'ok','<div class="big">'+r.sum+' '+balls(r.sum)+'</div>'+(r.sum>3?'Ниже общего порога, но для женщин Юго-Восточной Азии значимо > 3.':'Гирсутизма нет.'));
 }
 function calcPB(){var c={};document.querySelectorAll('[data-pb]').forEach(function(i){c[i.dataset.pb]=i.value===''?0:i.value});
  var r=C.pbac(c);if(r.error)return show('r-pb','high',esc(r.error));
  if(r.sum===0)return show('r-pb','','Введите количество');
- show('r-pb',r.heavy?'high':'ok','<div class="big">'+r.sum+' баллов</div>'+(r.heavy?'≥ 100 — обильное менструальное кровотечение (> 80 мл): обследование по КР «АМК».':'< 100 — кровопотеря в пределах нормы.'));
+ show('r-pb',r.heavy?'high':'ok','<div class="big">'+r.sum+' '+balls(r.sum)+'</div>'+(r.heavy?'≥ 100 — обильное менструальное кровотечение (> 80 мл): обследование по КР «АМК».':'< 100 — кровопотеря в пределах нормы.'));
 }
 function calcOV(){
  var post=seg.meno==='post',n=document.querySelectorAll('[data-rmi]:checked').length,ca=$('ov-ca').value,he=$('ov-he').value,h='',cls='ok';
@@ -601,11 +614,11 @@ function calcBMI(){if($('bmi-h').value===''||$('bmi-w').value==='')return show('
  show('r-bmi',r.level,'<div class="big">ИМТ '+f1(r.bmi)+'</div>'+r.cat+(r.abd===undefined?'':r.abd?'<br>ОТ ≥ 80 см — абдоминальное ожирение':'<br>ОТ в норме (< 80 см)'));
 }
 function calcOH(){if($('oh-v').value==='')return show('r-oh','','Введите значение');var r=C.ohp($('oh-v').value,$('oh-u').value);if(r.error)return show('r-oh','high',esc(r.error));
- var t={ok:['ok','Дефицит 21-гидроксилазы исключён'],mid:['mid','«Серая зона»'],high:['high','Дефицит 21-гидроксилазы']}[r.level];
+ var t={ok:['ok','Дефицит 21-гидроксилазы маловероятен'],mid:['mid','«Серая зона»'],high:['high','Дефицит 21-гидроксилазы']}[r.level];
  show('r-oh',t[0],'<div class="big">'+t[1]+'</div>'+f1(r.nmol)+' нмоль/л'+(r.level==='mid'?' — генетическое исследование CYP21A2 или стимуляционная проба; консультация эндокринолога':r.level==='high'?' — консультация эндокринолога':''));
 }
 function calcDS(){if($('ds-w').value==='')return show('r-ds','','Введите массу тела');var r=C.doses($('ds-w').value,$('ds-h').value);if(r.error)return show('r-ds','high',esc(r.error));
- var h='<div class="sub" style="margin-top:0">Транексамовая кислота</div><ul><li>Взрослые: '+r.txaAdult+'</li><li>Подростки, внутрь: '+r.txaPo+'</li><li>Подростки, в/в при остром АМК: '+r.txaIv+'</li></ul><div class="sub">Гентамицин (ВЗОМТ, стационар)</div><ul><li>'+r.gentLoad+', затем '+r.gentMaint+'</li><li>или '+r.gentOnce+'</li></ul><div class="sub">Эноксапарин (профилактика ВТЭО)</div><ul><li>'+r.enox+'</li></ul>';
+ var h='<div class="sub" style="margin-top:0">Транексамовая кислота</div><ul><li>Взрослые: '+r.txaAdult+'</li><li>Подростки, внутрь: '+r.txaPo+'</li><li>Подростки, в/в при остром АМК: '+r.txaIv+'</li></ul><div class="sub">#Гентамицин (ВЗОМТ, стационар)</div><ul><li>'+r.gentLoad+', затем '+r.gentMaint+'</li><li>или '+r.gentOnce+'</li></ul><div class="sub">Эноксапарин (профилактика ВТЭО)</div><ul><li>'+r.enox+'</li></ul>';
  h+=r.mtx?'<div class="sub">#Метотрексат</div><ul><li>ППТ '+f1(r.bsa)+' м² → '+r.mtx+'</li></ul>':'<div class="note">Укажите рост — рассчитаю метотрексат по площади поверхности тела.</div>';
  show('r-ds','ok',h);
 }
